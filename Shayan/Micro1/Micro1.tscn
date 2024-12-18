@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0q8usjt7ekf6"]
+[gd_scene load_steps=4 format=3 uid="uid://b0q8usjt7ekf6"]
+
+[ext_resource type="Script" path="res://Shayan/Micro1/Scripts/micro_1.gd" id="1_2cvu8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvg4y"]
 size = Vector2(115.5, 148)
@@ -7,6 +9,7 @@ size = Vector2(115.5, 148)
 size = Vector2(147, 101)
 
 [node name="Micro1" type="Node2D"]
+script = ExtResource("1_2cvu8")
 
 [node name="Shayan" type="CharacterBody2D" parent="."]
 
@@ -23,3 +26,7 @@ shape = SubResource("RectangleShape2D_cvg4y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dumbass Car"]
 position = Vector2(1315, 469)
 shape = SubResource("RectangleShape2D_n657j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1148.0
+offset_bottom = 648.0
