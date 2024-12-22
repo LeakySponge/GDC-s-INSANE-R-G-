@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv6y8v66ikxgu"]
-
-[ext_resource type="Script" path="res://All Stuff/main.gd" id="1_a7qrd"]
-
-[node name="Main" type="Node2D"]
-script = ExtResource("1_a7qrd")
-
-[connection signal="_on_completed_game" from="." to="." method="_on__on_completed_game"]
-[connection signal="game_start" from="." to="." method="_on_game_start"]
