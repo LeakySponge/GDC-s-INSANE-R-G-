@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqtxsh5bg3mlh"]
+
+[ext_resource type="Texture2D" uid="uid://br3sb66fphwiv" path="res://Arcade - Space Invaders - Game Graphics and Color Overlays.png" id="1_enpl2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc1tt"]
+atlas = ExtResource("1_enpl2")
+region = Rect2(1, 49, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fl14"]
+atlas = ExtResource("1_enpl2")
+region = Rect2(19, 49, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t65ha"]
+atlas = ExtResource("1_enpl2")
+region = Rect2(37, 49, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1yl6"]
+atlas = ExtResource("1_enpl2")
+region = Rect2(58, 49, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji3aw"]
+atlas = ExtResource("1_enpl2")
+region = Rect2(1, 49, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unl6i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc1tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fl14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t65ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1yl6")
+}],
+"loop": true,
+"name": &"DEATh",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji3aw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7vfv"]
+size = Vector2(16, 8)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_unl6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q7vfv")
