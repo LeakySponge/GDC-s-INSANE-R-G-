@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterMove" load_steps=2 format=3 uid="uid://ce5e6u7bsph1e"]
+
+[ext_resource type="Script" path="res://CharacterMove.gd" id="1_2alfh"]
+
+[resource]
+script = ExtResource("1_2alfh")
+name = &"terry-1"
+notes = ""
+command = []
+hit_level = 0
+damage = 0.0
+startup_frames = 0
+block_frames = 0
+hit_frames = 0
+counter_frames = 0

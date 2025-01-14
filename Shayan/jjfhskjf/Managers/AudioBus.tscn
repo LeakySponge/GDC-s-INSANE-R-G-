@@ -1,0 +1,157 @@
+[gd_scene load_steps=29 format=4]
+
+[ext_resource type="Script" path="res://Managers/AudioBus.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://di3fa5bitpuay" path="res://Sound Effects/MenuButtonMousedOver.wav" id="2"]
+[ext_resource type="AudioStream" uid="uid://cqek3axbtom16" path="res://Sound Effects/MenuButtonClicked.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://rvd5bo6il737" path="res://Sound Effects/OreMine1.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://cv6kgic1xkc1c" path="res://Sound Effects/OreMine2.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://xflnko3khjs0" path="res://Sound Effects/OreMine3.wav" id="6"]
+[ext_resource type="AudioStream" uid="uid://plrgsv04nbc1" path="res://Sound Effects/OnTurnEnded.wav" id="7"]
+[ext_resource type="AudioStream" uid="uid://bfe42wis8ww5c" path="res://Sound Effects/OnTurnStarted.wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://svfjrbtt2ku1" path="res://Sound Effects/OnCardPurchased.wav" id="9"]
+[ext_resource type="AudioStream" uid="uid://dx1rs8cwwi30d" path="res://Sound Effects/OnCardRemoved.wav" id="10"]
+[ext_resource type="AudioStream" uid="uid://c8w6w618bge1e" path="res://Sound Effects/OnCardUpgraded.wav" id="11"]
+[ext_resource type="AudioStream" uid="uid://dg6r0qyvi14k2" path="res://Sound Effects/CardMousedOver.wav" id="12"]
+[ext_resource type="AudioStream" uid="uid://pl4i18ekv52j" path="res://Sound Effects/CardDrawn.wav" id="13"]
+[ext_resource type="AudioStream" uid="uid://b2ytpya8gynyf" path="res://Sound Effects/CardDiscarded.wav" id="14"]
+[ext_resource type="AudioStream" uid="uid://dofkgb85fqf67" path="res://Sound Effects/Reshuffle 1.wav" id="15"]
+[ext_resource type="AudioStream" uid="uid://btxntjutqsedn" path="res://Sound Effects/Reshuffle 2.wav" id="16"]
+[ext_resource type="AudioStream" uid="uid://dcf1wfw77lpph" path="res://Sound Effects/OnCavesCollapseWarning.wav" id="17"]
+[ext_resource type="AudioStream" uid="uid://d2jh8my0tw2xc" path="res://Sound Effects/OnGameOver.wav" id="18"]
+[ext_resource type="AudioStream" uid="uid://dttetiwrdssiv" path="res://Sound Effects/ExpeditionWon.wav" id="19"]
+[ext_resource type="AudioStream" uid="uid://duwq5v63ewnjx" path="res://Sound Effects/ActionCardPop.wav" id="20"]
+[ext_resource type="AudioStream" uid="uid://big22fneg00ax" path="res://Sound Effects/ActionCardPickaxe.wav" id="21"]
+[ext_resource type="AudioStream" uid="uid://deayfx1grufmf" path="res://Sound Effects/ActionCardProspect.wav" id="22"]
+[ext_resource type="AudioStream" uid="uid://crkhioyv128it" path="res://Sound Effects/ActionCardUpgrade.wav" id="23"]
+[ext_resource type="AudioStream" uid="uid://djn32skmlx5tx" path="res://Sound Effects/ActionCardGemstone.wav" id="24"]
+[ext_resource type="AudioStream" uid="uid://bvr6yl8dh76yh" path="res://Sound Effects/ActionCardChest.wav" id="25"]
+[ext_resource type="AudioStream" uid="uid://bff1vj5hak5bx" path="res://Sound Effects/ActionCardCreature.wav" id="26"]
+[ext_resource type="AudioStream" uid="uid://ne1r6lexnurl" path="res://Sound Effects/CardDeselected.wav" id="27"]
+[ext_resource type="AudioStream" uid="uid://lr8484rv7pj7" path="res://Sound Effects/Not enough energy.wav" id="28"]
+
+[node name="AudioBus" type="Node2D"]
+process_mode = 3
+script = ExtResource("1")
+
+[node name="MenuButtonMousedOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2")
+panning_strength = 0.0
+
+[node name="MenuButtonClicked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3")
+panning_strength = 0.0
+
+[node name="ResourcePlayed1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4")
+panning_strength = 0.0
+
+[node name="ResourcePlayed2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5")
+panning_strength = 0.0
+
+[node name="ResourcePlayed3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6")
+panning_strength = 0.0
+
+[node name="ActionCardPlayed" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+
+[node name="TargetCardPlayed" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+
+[node name="TurnEnded" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7")
+panning_strength = 0.0
+
+[node name="TurnStarted" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8")
+panning_strength = 0.0
+
+[node name="CardPurchased" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9")
+panning_strength = 0.0
+
+[node name="CardRemoved" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10")
+panning_strength = 0.0
+
+[node name="CardUpgraded" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11")
+panning_strength = 0.0
+
+[node name="CardMousedOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12")
+panning_strength = 0.0
+
+[node name="CardDrawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13")
+panning_strength = 0.0
+
+[node name="CardDiscarded" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14")
+panning_strength = 0.0
+
+[node name="Reshuffle 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15")
+panning_strength = 0.0
+
+[node name="Reshuffle 2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16")
+panning_strength = 0.0
+
+[node name="CavesCollapseWarning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17")
+panning_strength = 0.0
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18")
+panning_strength = 0.0
+
+[node name="ExpeditionWon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19")
+panning_strength = 0.0
+
+[node name="LastExpeditionWon" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+
+[node name="ShopGoButtonClicked" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+
+[node name="StartGameClicked" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+
+[node name="ActionCardPop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20")
+panning_strength = 0.0
+
+[node name="ActionCardMine" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21")
+panning_strength = 0.0
+
+[node name="ActionCardProspect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22")
+panning_strength = 0.0
+
+[node name="ActionCardUpgrade" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23")
+panning_strength = 0.0
+
+[node name="ActionCardGemstone" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24")
+panning_strength = 0.0
+
+[node name="ActionCardChest" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25")
+panning_strength = 0.0
+
+[node name="ActionCardCreature" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26")
+panning_strength = 0.0
+
+[node name="CardDeselected" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27")
+panning_strength = 0.0
+
+[node name="NotEnoughEnergy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("28")
+panning_strength = 0.0

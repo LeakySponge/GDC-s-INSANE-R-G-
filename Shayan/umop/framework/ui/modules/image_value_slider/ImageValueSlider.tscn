@@ -1,0 +1,126 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://framework/resources/fonts/m3x6/pixel_16.tres" type="FontFile" id=1]
+[ext_resource path="res://framework/ui/modules/image_value_slider/slider_node_active.png" type="Texture2D" id=2]
+[ext_resource path="res://framework/ui/modules/image_value_slider/image_value_slider_node.gd" type="Script" id=3]
+[ext_resource path="res://framework/ui/modules/image_value_slider/image_value_slider.gd" type="Script" id=4]
+[ext_resource path="res://framework/ui/modules/image_value_slider/slider_node_inactive.png" type="Texture2D" id=5]
+[ext_resource path="res://framework/node_modules/audio_players/detachable_audio_player/DetachableAudioPlayer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://framework/ui/modules/menu_button/audio/hover_01.wav" type="AudioStream" id=7]
+[ext_resource path="res://framework/ui/modules/menu_button/audio/select_01.wav" type="AudioStream" id=8]
+[ext_resource path="res://framework/ui/modules/menu_button/audio/select_02.wav" type="AudioStream" id=9]
+[ext_resource path="res://framework/ui/modules/image_value_slider/image_value_slider_label.gd" type="Script" id=10]
+
+[node name="ImageValueSlider" type="MarginContainer"]
+offset_right = 45.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+label_active_color = Color( 0, 0, 0, 1 )
+label_inactive_color = Color( 1, 0.945098, 0.909804, 1 )
+background_active_color = Color( 1, 0.945098, 0.909804, 1 )
+background_inactive_color = Color( 1, 1, 1, 0 )
+ActiveTexture = ExtResource( 2 )
+InactiveTexture = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 45.0
+offset_bottom = 10.0
+mouse_filter = 1
+color = Color( 1, 1, 1, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 45.0
+offset_bottom = 10.0
+mouse_filter = 1
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_left = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+offset_left = 2.0
+offset_right = 43.0
+offset_bottom = 10.0
+focus_mode = 2
+size_flags_horizontal = 7
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+offset_right = 16.0
+offset_bottom = 10.0
+mouse_filter = 1
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = ExtResource( 1 )
+text = "TEST"
+script = ExtResource( 10 )
+
+[node name="Slider" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+offset_left = 16.0
+offset_right = 41.0
+offset_bottom = 10.0
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Slider"]
+offset_right = 5.0
+offset_bottom = 10.0
+size_flags_vertical = 5
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/Slider"]
+offset_left = 5.0
+offset_right = 10.0
+offset_bottom = 10.0
+size_flags_vertical = 5
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/Slider"]
+offset_left = 10.0
+offset_right = 15.0
+offset_bottom = 10.0
+size_flags_vertical = 5
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer/Slider"]
+offset_left = 15.0
+offset_right = 20.0
+offset_bottom = 10.0
+size_flags_vertical = 5
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer/Slider"]
+offset_left = 20.0
+offset_right = 25.0
+offset_bottom = 10.0
+size_flags_vertical = 5
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="PressedSound" parent="." instance=ExtResource( 6 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PressedSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 8 )
+volume_db = -24.0
+bus = "Menu"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="PressedSound/RandomAudioPlayer" index="1"]
+stream = ExtResource( 9 )
+volume_db = -24.0
+bus = "Menu"
+
+[node name="HoverSound" parent="." instance=ExtResource( 6 )]
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="HoverSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 7 )
+volume_db = -24.0
+bus = "Menu"
+
+[editable path="PressedSound"]
+[editable path="PressedSound/RandomAudioPlayer"]
+[editable path="HoverSound"]
+[editable path="HoverSound/RandomAudioPlayer"]

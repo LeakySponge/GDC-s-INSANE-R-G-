@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://framework/globals/scene_manager/scene_manager.gd" type="Script" id=1]
+[ext_resource path="res://framework/ui/menus/screen_transitions/polka_dots/PolkaDotsTransition.tscn" type="PackedScene" id=2]
+[ext_resource path="res://framework/ui/menus/main_menu/MainMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://framework/ui/menus/splash_screen/SplashScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/Level.tscn" type="PackedScene" id=5]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource( 1 )
+screen_transition = ExtResource( 2 )
+splash_screen = ExtResource( 4 )
+main_menu = ExtResource( 3 )
+game = ExtResource( 5 )

@@ -1,0 +1,199 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://game/player.gd" type="Script" id=1]
+[ext_resource path="res://game/pistol.png" type="Texture2D" id=2]
+[ext_resource path="res://framework/node_modules/squasher/Squasher.tscn" type="PackedScene" id=3]
+[ext_resource path="res://framework/resources/shapes/8/semi_square_8.png" type="Texture2D" id=4]
+[ext_resource path="res://game/death_explosion_01.wav" type="AudioStream" id=5]
+[ext_resource path="res://game/pistol.gd" type="Script" id=6]
+[ext_resource path="res://framework/node_modules/audio_players/detachable_audio_player/DetachableAudioPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/jump_01.wav" type="AudioStream" id=8]
+[ext_resource path="res://game/jump_02.wav" type="AudioStream" id=9]
+[ext_resource path="res://game/death_explosion_02.wav" type="AudioStream" id=10]
+[ext_resource path="res://game/pre_death_01.wav" type="AudioStream" id=11]
+[ext_resource path="res://game/land_01.wav" type="AudioStream" id=12]
+[ext_resource path="res://game/land_02.wav" type="AudioStream" id=13]
+[ext_resource path="res://game/pickup_01.wav" type="AudioStream" id=14]
+[ext_resource path="res://game/pickup_02.wav" type="AudioStream" id=15]
+[ext_resource path="res://game/pickup_03.wav" type="AudioStream" id=16]
+[ext_resource path="res://game/pre_death_02.wav" type="AudioStream" id=17]
+[ext_resource path="res://game/thingy.png" type="Texture2D" id=18]
+[ext_resource path="res://framework/node_modules/drop_shadow/DropShadow.tscn" type="PackedScene" id=19]
+[ext_resource path="res://game/pre_death_03.wav" type="AudioStream" id=20]
+[ext_resource path="res://game/death_s_01.wav" type="AudioStream" id=21]
+[ext_resource path="res://game/pre_death_04.wav" type="AudioStream" id=22]
+[ext_resource path="res://game/death_s_02.wav" type="AudioStream" id=23]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.5
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2, 2 )
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 1 )
+walk_angle_acceleration = 120.0
+walk_angle_decay = 20.0
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+self_modulate = Color( 0.388235, 0.780392, 0.301961, 1 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -4 )
+
+[node name="Pistol" type="Node2D" parent="Visuals/Sprite2D"]
+visible = false
+position = Vector2( 0, -4 )
+script = ExtResource( 6 )
+bullet_speed = 750.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals/Sprite2D/Pistol"]
+position = Vector2( 5, 0 )
+texture = ExtResource( 2 )
+
+[node name="ShadowContainer" type="Node2D" parent="Visuals"]
+position = Vector2( 2, -2 )
+
+[node name="Shadow" type="Sprite2D" parent="Visuals/ShadowContainer"]
+modulate = Color( 0, 0, 0, 0.490196 )
+z_index = -5
+texture = ExtResource( 4 )
+
+[node name="Squasher" parent="." instance=ExtResource( 3 )]
+target = NodePath("../Visuals")
+
+[node name="PickupArea" type="Area2D" parent="."]
+position = Vector2( 0, -3 )
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource( 1 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( 0, -2 )
+shape = SubResource( 2 )
+
+[node name="JumpSound" parent="." instance=ExtResource( 7 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="JumpSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 8 )
+bus = "Game"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="JumpSound/RandomAudioPlayer" index="1"]
+stream = ExtResource( 9 )
+bus = "Game"
+
+[node name="LandSound" parent="." instance=ExtResource( 7 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LandSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 12 )
+bus = "PlayerLand"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="LandSound/RandomAudioPlayer" index="1"]
+stream = ExtResource( 13 )
+bus = "PlayerLand"
+
+[node name="PickupSound" parent="." instance=ExtResource( 7 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PickupSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 14 )
+bus = "Game"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="PickupSound/RandomAudioPlayer" index="1"]
+stream = ExtResource( 15 )
+bus = "Game"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="PickupSound/RandomAudioPlayer" index="2"]
+stream = ExtResource( 16 )
+bus = "Game"
+
+[node name="DeathSound" parent="." instance=ExtResource( 7 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 5 )
+bus = "Game"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="DeathSound/RandomAudioPlayer" index="1"]
+stream = ExtResource( 10 )
+bus = "Game"
+
+[node name="DeathSound2" parent="." instance=ExtResource( 7 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathSound2/RandomAudioPlayer" index="0"]
+stream = ExtResource( 21 )
+bus = "Game"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="DeathSound2/RandomAudioPlayer" index="1"]
+stream = ExtResource( 23 )
+bus = "Game"
+
+[node name="PreDeathSound" parent="." instance=ExtResource( 7 )]
+
+[node name="RandomAudioPlayer" parent="PreDeathSound" index="0"]
+volume_db = -20.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PreDeathSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 11 )
+bus = "Game"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="PreDeathSound/RandomAudioPlayer" index="1"]
+stream = ExtResource( 17 )
+bus = "Game"
+
+[node name="PreDeathSound2" parent="." instance=ExtResource( 7 )]
+
+[node name="RandomAudioPlayer" parent="PreDeathSound2" index="0"]
+min_pitch = 1.0
+volume_db = -20.0
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="PreDeathSound2/RandomAudioPlayer" index="0"]
+stream = ExtResource( 20 )
+bus = "PreDeath"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="PreDeathSound2/RandomAudioPlayer" index="1"]
+stream = ExtResource( 22 )
+bus = "PreDeath"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ThingyContainer" type="Node2D" parent="."]
+position = Vector2( 0, -4 )
+z_index = 6
+
+[node name="DeathThingy" type="Sprite2D" parent="ThingyContainer"]
+visible = false
+z_index = 4
+texture = ExtResource( 18 )
+
+[node name="DropShadow" parent="ThingyContainer/DeathThingy" instance=ExtResource( 19 )]
+show_behind_parent = true
+target = NodePath("..")
+shadow_offset = Vector2( 2, 2 )
+copy_visibility = false
+copy_rotation = false
+
+[node name="ThingyTween" type="Tween" parent="."]
+
+[connection signal="area_entered" from="PickupArea" to="." method="_on_PickupArea_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="JumpSound"]
+[editable path="JumpSound/RandomAudioPlayer"]
+[editable path="LandSound"]
+[editable path="LandSound/RandomAudioPlayer"]
+[editable path="PickupSound"]
+[editable path="PickupSound/RandomAudioPlayer"]
+[editable path="DeathSound"]
+[editable path="DeathSound/RandomAudioPlayer"]
+[editable path="DeathSound2"]
+[editable path="DeathSound2/RandomAudioPlayer"]
+[editable path="PreDeathSound"]
+[editable path="PreDeathSound/RandomAudioPlayer"]
+[editable path="PreDeathSound2"]
+[editable path="PreDeathSound2/RandomAudioPlayer"]

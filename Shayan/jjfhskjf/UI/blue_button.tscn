@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://y0affnsd8io2"]
+
+[ext_resource type="Texture2D" uid="uid://dx20pwneb41jy" path="res://Art/Theme/Blue Button Disabled.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://mnpxpdvyypli" path="res://Art/Theme/Blue Button Hover.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://pyrou4lphhe5" path="res://Art/Theme/Blue Button Pressed.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://c7516wuwlgkdj" path="res://Art/Theme/Blue Button Default.png" id="4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0wc0i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_epeaf"]
+texture = ExtResource("1")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kmtc2"]
+texture = ExtResource("2")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r8b2e"]
+texture = ExtResource("3")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ppsgv"]
+texture = ExtResource("4")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[node name="BlueButton" type="Button"]
+offset_right = 36.0
+offset_bottom = 36.0
+theme_override_colors/font_hover_color = Color(0.968627, 1, 0.972549, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0wc0i")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_epeaf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kmtc2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_r8b2e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ppsgv")
+text = "button"

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=4]
+
+[ext_resource type="Script" path="res://Particles/card_particle.gd" id="1"]
+[ext_resource type="Curve" uid="uid://b8wtstdxnmrgb" path="res://Resources/Card Particle Curve.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://cpjryrhonhtj0" path="res://Art/Card Back Tiny.png" id="3"]
+
+[node name="CardParticle" type="Node2D"]
+z_index = 5
+script = ExtResource("1")
+movement_curve = ExtResource("2")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3")
+
+[node name="Particle Folder" type="Node2D" parent="."]
+
+[node name="Particle Spawn Timer" type="Timer" parent="."]
+wait_time = 0.01
+
+[connection signal="timeout" from="Particle Spawn Timer" to="." method="_on_particle_spawn_timer_timeout"]

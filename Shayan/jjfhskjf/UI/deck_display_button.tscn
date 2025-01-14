@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=4]
+
+[ext_resource type="Texture2D" uid="uid://br77b8e074dlo" path="res://Art/DeckButtonIcon.png" id="1"]
+[ext_resource type="Script" path="res://UI/DeckDisplayButton.gd" id="2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a0mvi"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ssjki"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="Shortcut" id="Shortcut_apkrl"]
+events = [SubResource("InputEventKey_ssjki")]
+
+[node name="DeckDisplayButton" type="Button"]
+process_mode = 3
+offset_right = 104.0
+offset_bottom = 86.0
+pivot_offset = Vector2(52, 43)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a0mvi")
+shortcut = SubResource("Shortcut_apkrl")
+icon = ExtResource("1")
+flat = true
+script = ExtResource("2")
+
+[node name="ControlLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_shadow_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 18
+text = "(d)"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

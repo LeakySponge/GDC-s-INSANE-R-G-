@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://framework/resources/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://framework/ui/modules/loading_label/loading_label.gd" type="Script" id=2]
+
+[node name="LoadingLabel" type="MarginContainer"]
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+duration = 0.35
+
+[node name="LabelContainer" type="CenterContainer" parent="."]
+offset_right = 34.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="LabelContainer"]
+visible = false
+offset_left = 3.0
+offset_right = 31.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOADING"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="LabelContainer"]
+visible = false
+offset_left = 2.0
+offset_right = 32.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOADING."
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="LabelContainer"]
+visible = false
+offset_left = 1.0
+offset_right = 33.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOADING.."
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="LabelContainer"]
+offset_right = 34.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOADING..."
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="."]

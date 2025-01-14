@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=4]
+
+[ext_resource type="Texture2D" uid="uid://1u3gkgnmnckr" path="res://Art/Card Artworks/Dynamite.png" id="1"]
+[ext_resource type="Script" path="res://Card System/CardData.gd" id="2"]
+
+[resource]
+script = ExtResource("2")
+name = "Dynamite"
+description = "YELLOW(Remove) a card from your deck."
+card_type = 4
+resource_type = 0
+resource_value = 0
+utility_type = 1
+energy_cost = 0
+plus_cards = 0
+plus_energy = 0
+plus_ore = 0
+plus_score = 0
+ability_magnitude = 0
+ability_magnitude_2 = 0
+ability_1 = null
+ability_2 = null
+consumable = false
+base_price = 0
+art = ExtResource("1")
+sound_effect_id = ""

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dx1rs8cwwi30d"
+path="res://.godot/imported/OnCardRemoved.wav-5a5773e2a063e0bcabc6e9fa34c4cae6.sample"
+
+[deps]
+
+source_file="res://Sound Effects/OnCardRemoved.wav"
+dest_files=["res://.godot/imported/OnCardRemoved.wav-5a5773e2a063e0bcabc6e9fa34c4cae6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

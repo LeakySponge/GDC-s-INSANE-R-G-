@@ -1,0 +1,407 @@
+[gd_scene load_steps=18 format=4]
+
+[ext_resource type="Script" path="res://Map/map.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://n2dryuaad5qr" path="res://Art/Map 2.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://dcoptsn8erdwh" path="res://UI/panel.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://bl6wbm1560u24" path="res://Art/Map Title.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://4ce8vs2fygp" path="res://Art/Map Key.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dfyskqjmvlltd" path="res://Art/Tiny Pickaxe.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://dfqw4j4mrshxl" path="res://UI/expedition_counter_small.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://k2cpb7ad8rgm" path="res://Art/Map Node Blue.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bj6wl41yky0h1" path="res://Art/Map Node Cross.png" id="9"]
+[ext_resource type="Script" path="res://Map/map_node.gd" id="10"]
+[ext_resource type="Texture2D" uid="uid://5cgcns0ed4xw" path="res://Art/Map Node Purple.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://d0ovs0lswp02e" path="res://Art/Map Node Yellow.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://c2wrs7qojkuug" path="res://Art/Map Node Red.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://d4jn8qrbhbiep" path="res://Art/Click to Navigate.png" id="14"]
+[ext_resource type="PackedScene" uid="uid://dl7toa1ds5go7" path="res://UI/blue_button.tscn" id="15"]
+[ext_resource type="Script" path="res://UI/map_go.gd" id="16"]
+[ext_resource type="PackedScene" uid="uid://cusmj1vbv5mqr" path="res://Menus/pause_menu.tscn" id="17"]
+
+[node name="Map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Art" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2")
+
+[node name="Title" parent="." instance=ExtResource("3")]
+z_index = -1
+layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 426.0
+offset_bottom = 120.0
+
+[node name="Margins" type="MarginContainer" parent="Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Art" type="TextureRect" parent="Title/Margins"]
+layout_mode = 2
+texture = ExtResource("4")
+stretch_mode = 3
+
+[node name="Key" parent="." instance=ExtResource("3")]
+z_index = -1
+layout_mode = 2
+offset_left = 24.0
+offset_top = 672.0
+offset_right = 360.0
+offset_bottom = 1056.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margins" type="MarginContainer" parent="Key"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Art" type="TextureRect" parent="Key/Margins"]
+layout_mode = 2
+texture = ExtResource("5")
+stretch_mode = 3
+
+[node name="Pickaxe" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 132.0
+offset_right = 66.0
+offset_bottom = 174.0
+texture = ExtResource("6")
+stretch_mode = 2
+
+[node name="Expedition Counter Small" parent="." instance=ExtResource("7")]
+offset_left = 72.0
+offset_top = 132.0
+offset_right = 72.0
+offset_bottom = 132.0
+small = true
+
+[node name="Nodes" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 798.0
+offset_top = 84.0
+offset_right = 864.0
+offset_bottom = 150.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("8")
+texture_hover = ExtResource("8")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="2" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 972.0
+offset_top = 156.0
+offset_right = 1038.0
+offset_bottom = 222.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("11")
+texture_pressed = ExtResource("11")
+texture_hover = ExtResource("11")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="3 - Forest" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 294.0
+offset_right = 1080.0
+offset_bottom = 360.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("12")
+texture_pressed = ExtResource("12")
+texture_hover = ExtResource("12")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="4" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 834.0
+offset_top = 384.0
+offset_right = 900.0
+offset_bottom = 450.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("8")
+texture_hover = ExtResource("8")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="5" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 690.0
+offset_top = 360.0
+offset_right = 756.0
+offset_bottom = 426.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("11")
+texture_pressed = ExtResource("11")
+texture_hover = ExtResource("11")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="6 - City" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 540.0
+offset_top = 414.0
+offset_right = 606.0
+offset_bottom = 480.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("12")
+texture_pressed = ExtResource("12")
+texture_hover = ExtResource("12")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="7" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 666.0
+offset_top = 498.0
+offset_right = 732.0
+offset_bottom = 564.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("8")
+texture_hover = ExtResource("8")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="8" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 792.0
+offset_top = 534.0
+offset_right = 858.0
+offset_bottom = 600.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("11")
+texture_pressed = ExtResource("11")
+texture_hover = ExtResource("11")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="9 - Hollow" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 0
+offset_left = 936.0
+offset_top = 534.0
+offset_right = 1014.0
+offset_bottom = 612.0
+pivot_offset = Vector2(39, 39)
+texture_normal = ExtResource("13")
+texture_pressed = ExtResource("13")
+texture_hover = ExtResource("13")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="10" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 1080.0
+offset_top = 564.0
+offset_right = 1146.0
+offset_bottom = 630.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("8")
+texture_hover = ExtResource("8")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="11" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 1194.0
+offset_top = 606.0
+offset_right = 1260.0
+offset_bottom = 672.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("11")
+texture_pressed = ExtResource("11")
+texture_hover = ExtResource("11")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="12 - Mushroom" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 1224.0
+offset_top = 714.0
+offset_right = 1290.0
+offset_bottom = 780.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("12")
+texture_pressed = ExtResource("12")
+texture_hover = ExtResource("12")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="13" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 1074.0
+offset_top = 720.0
+offset_right = 1140.0
+offset_bottom = 786.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("8")
+texture_hover = ExtResource("8")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="14" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 0
+offset_left = 948.0
+offset_top = 750.0
+offset_right = 1014.0
+offset_bottom = 816.0
+pivot_offset = Vector2(33, 33)
+texture_normal = ExtResource("11")
+texture_pressed = ExtResource("11")
+texture_hover = ExtResource("11")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="15 - Core" type="TextureButton" parent="Nodes"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 0
+offset_left = 882.0
+offset_top = 846.0
+offset_right = 960.0
+offset_bottom = 924.0
+pivot_offset = Vector2(39, 39)
+texture_normal = ExtResource("13")
+texture_pressed = ExtResource("13")
+texture_hover = ExtResource("13")
+texture_disabled = ExtResource("9")
+stretch_mode = 3
+script = ExtResource("10")
+
+[node name="Click to Navigate" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1620.0
+offset_top = 1008.0
+offset_right = 1896.0
+offset_bottom = 1056.0
+texture = ExtResource("14")
+
+[node name="Map Go" parent="." instance=ExtResource("15")]
+visible = false
+layout_mode = 0
+offset_left = 1746.0
+offset_top = 984.0
+offset_right = 1896.0
+offset_bottom = 1057.0
+pivot_offset = Vector2(75, 36)
+text = "go >>"
+script = ExtResource("16")
+
+[node name="Pause Menu" parent="." instance=ExtResource("17")]
+visible = false
+
+[connection signal="mouse_entered" from="Nodes/1" to="Nodes/1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/1" to="Nodes/1" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/1" to="Nodes/1" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/2" to="Nodes/2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/2" to="Nodes/2" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/2" to="Nodes/2" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/3 - Forest" to="Nodes/3 - Forest" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/3 - Forest" to="Nodes/3 - Forest" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/3 - Forest" to="Nodes/3 - Forest" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/4" to="Nodes/4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/4" to="Nodes/4" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/4" to="Nodes/4" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/5" to="Nodes/5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/5" to="Nodes/5" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/5" to="Nodes/5" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/6 - City" to="Nodes/6 - City" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/6 - City" to="Nodes/6 - City" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/6 - City" to="Nodes/6 - City" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/7" to="Nodes/7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/7" to="Nodes/7" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/7" to="Nodes/7" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/8" to="Nodes/8" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/8" to="Nodes/8" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/8" to="Nodes/8" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/9 - Hollow" to="Nodes/9 - Hollow" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/9 - Hollow" to="Nodes/9 - Hollow" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/9 - Hollow" to="Nodes/9 - Hollow" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/10" to="Nodes/10" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/10" to="Nodes/10" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/10" to="Nodes/10" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/11" to="Nodes/11" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/11" to="Nodes/11" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/11" to="Nodes/11" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/12 - Mushroom" to="Nodes/12 - Mushroom" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/12 - Mushroom" to="Nodes/12 - Mushroom" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/12 - Mushroom" to="Nodes/12 - Mushroom" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/13" to="Nodes/13" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/13" to="Nodes/13" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/13" to="Nodes/13" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/14" to="Nodes/14" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/14" to="Nodes/14" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/14" to="Nodes/14" method="_on_pressed"]
+[connection signal="mouse_entered" from="Nodes/15 - Core" to="Nodes/15 - Core" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Nodes/15 - Core" to="Nodes/15 - Core" method="_on_mouse_exited"]
+[connection signal="pressed" from="Nodes/15 - Core" to="Nodes/15 - Core" method="_on_pressed"]
+[connection signal="mouse_entered" from="Map Go" to="Map Go" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Map Go" to="Map Go" method="_on_mouse_exited"]
+[connection signal="pressed" from="Map Go" to="Map Go" method="_on_pressed"]

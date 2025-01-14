@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=4]
+
+[ext_resource type="Shader" path="res://Shaders/fake_3d.gdshader" id="1"]
+[ext_resource type="Script" path="res://Card System/inspect_card.gd" id="2"]
+[ext_resource type="Resource" uid="uid://e0067cqbc4lr" path="res://Card Resources/Pickaxe.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://bvoton0v0doc0" path="res://Card System/card_visual.tscn" id="4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ven8s"]
+resource_local_to_scene = true
+shader = ExtResource("1")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81477"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyuuf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jvx83"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nqmd"]
+
+[node name="InspectCard" type="Control"]
+material = SubResource("ShaderMaterial_ven8s")
+custom_minimum_size = Vector2(228, 336)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -168.0
+offset_right = 114.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
+data = ExtResource("3")
+
+[node name="CardVisual" parent="." instance=ExtResource("4")]
+layout_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 6.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_81477")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kyuuf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jvx83")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6nqmd")
+
+[connection signal="gui_input" from="Button" to="." method="_on_button_gui_input"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

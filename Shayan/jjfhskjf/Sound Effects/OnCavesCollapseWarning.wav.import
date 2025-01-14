@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcf1wfw77lpph"
+path="res://.godot/imported/OnCavesCollapseWarning.wav-34dfc4e6e474b7fed0640931653159e6.sample"
+
+[deps]
+
+source_file="res://Sound Effects/OnCavesCollapseWarning.wav"
+dest_files=["res://.godot/imported/OnCavesCollapseWarning.wav-34dfc4e6e474b7fed0640931653159e6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

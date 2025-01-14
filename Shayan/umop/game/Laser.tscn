@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://framework/node_modules/drop_shadow/DropShadow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/laser.gd" type="Script" id=2]
+[ext_resource path="res://framework/node_modules/audio_players/detachable_audio_player/DetachableAudioPlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/laser_spawn_01.wav" type="AudioStream" id=4]
+[ext_resource path="res://game/laser_impact_01.wav" type="AudioStream" id=5]
+[ext_resource path="res://game/laser_cont_01.wav" type="AudioStream" id=6]
+[ext_resource path="res://game/triangle.png" type="Texture2D" id=7]
+[ext_resource path="res://game/line_texture_full.png" type="Texture2D" id=8]
+[ext_resource path="res://game/laser_02.wav" type="AudioStream" id=9]
+[ext_resource path="res://game/triple_sound_01.wav" type="AudioStream" id=10]
+[ext_resource path="res://game/laser_04.wav" type="AudioStream" id=11]
+[ext_resource path="res://game/triple_sound_02.wav" type="AudioStream" id=12]
+[ext_resource path="res://game/triple_laser_03.wav" type="AudioStream" id=13]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.051282, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.115385, 0.918182 ), 0.0, 0.0, 0, 0, Vector2( 0.222222, 0.663636 ), 0.0, 0.0, 0, 0, Vector2( 0.448718, 0.845455 ), 0.0, 0.0, 0, 0, Vector2( 0.508547, 0.6 ), 0.0, 0.0, 0, 0, Vector2( 0.683761, 0.8 ), 0.0, 0.0, 0, 0, Vector2( 0.803419, 0.590909 ), 0.0, 0.0, 0, 0, Vector2( 0.91453, 0.945454 ), 0.425454, 0.425454, 0, 0, Vector2( 0.965812, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+extents = Vector2( 2, 2 )
+
+[node name="Laser" type="Node2D"]
+z_index = 1
+script = ExtResource( 2 )
+initial_wait = 1.5
+laser_duration = 1.15
+noise_rate = 1500.0
+segment_count = 32.0
+
+[node name="TargetLine" type="Line2D" parent="."]
+points = PackedVector2Array( 0, 0, 100, -50 )
+width = 2.0
+default_color = Color( 1, 1, 1, 0.443137 )
+texture = ExtResource( 8 )
+texture_mode = 1
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="LaserLine2" type="Line2D" parent="."]
+position = Vector2( 2, 1 )
+z_index = -8
+width = 2.0
+default_color = Color( 0.0941176, 0.0784314, 0.145098, 0.588235 )
+
+[node name="LaserLine" type="Line2D" parent="."]
+width = 2.0
+width_curve = SubResource( 2 )
+default_color = Color( 0.964706, 0.458824, 0.478431, 1 )
+
+[node name="DropShadow" parent="." instance=ExtResource( 1 )]
+target = NodePath("../Sprite2D")
+shadow_offset = Vector2( 2, 2 )
+copy_scale = true
+
+[node name="DropShadow2" parent="." instance=ExtResource( 1 )]
+target = NodePath("../Sprite2")
+shadow_offset = Vector2( 2, 2 )
+copy_scale = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color( 0.909804, 0.717647, 0.588235, 1 )
+texture = ExtResource( 7 )
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+modulate = Color( 0.909804, 0.717647, 0.588235, 1 )
+texture = ExtResource( 7 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="SpawnSound" parent="." instance=ExtResource( 3 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SpawnSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 4 )
+bus = "Game"
+
+[node name="ImpactSound" parent="." instance=ExtResource( 3 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ImpactSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 5 )
+bus = "Game"
+
+[node name="ContSound" parent="." instance=ExtResource( 3 )]
+
+[node name="RandomAudioPlayer" parent="ContSound" index="0"]
+min_pitch = 0.5
+max_pitch = 0.75
+volume_db = -26.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ContSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 6 )
+bus = "LaserCont"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="ContSound/RandomAudioPlayer" index="1"]
+stream = ExtResource( 9 )
+bus = "LaserCont"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="ContSound/RandomAudioPlayer" index="2"]
+stream = ExtResource( 11 )
+bus = "LaserCont"
+
+[node name="TripleSound" parent="." instance=ExtResource( 3 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TripleSound/RandomAudioPlayer" index="0"]
+stream = ExtResource( 10 )
+bus = "LaserCont"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="TripleSound/RandomAudioPlayer" index="1"]
+stream = ExtResource( 12 )
+bus = "LaserCont"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="TripleSound/RandomAudioPlayer" index="2"]
+stream = ExtResource( 13 )
+bus = "LaserCont"
+
+[node name="Tween" type="Tween" parent="."]
+
+[editable path="SpawnSound"]
+[editable path="SpawnSound/RandomAudioPlayer"]
+[editable path="ImpactSound"]
+[editable path="ImpactSound/RandomAudioPlayer"]
+[editable path="ContSound"]
+[editable path="ContSound/RandomAudioPlayer"]
+[editable path="TripleSound"]
+[editable path="TripleSound/RandomAudioPlayer"]

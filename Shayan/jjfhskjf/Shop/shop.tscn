@@ -1,0 +1,319 @@
+[gd_scene load_steps=68 format=4]
+
+[ext_resource type="Script" path="res://Shop/shop.gd" id="1"]
+[ext_resource type="Resource" uid="uid://btrq3wakdbphk" path="res://Card Resources/Big Ore.tres" id="2"]
+[ext_resource type="Resource" uid="uid://b5choay1503p7" path="res://Card Resources/Big Scorium.tres" id="3"]
+[ext_resource type="Resource" uid="uid://fpmqxrxgxoei" path="res://Card Resources/Brush.tres" id="4"]
+[ext_resource type="Resource" uid="uid://e0067cqbc4lr" path="res://Card Resources/Pickaxe.tres" id="5"]
+[ext_resource type="Resource" uid="uid://ces12qtr6gwdi" path="res://Card Resources/Shovel.tres" id="6"]
+[ext_resource type="Resource" uid="uid://dd40n3we2wocx" path="res://Card Resources/Chisel.tres" id="7"]
+[ext_resource type="Resource" uid="uid://0ty70nvh3gbt" path="res://Card Resources/Furnace.tres" id="8"]
+[ext_resource type="Resource" uid="uid://bur5jy6hnwvbb" path="res://Card Resources/Helmet.tres" id="9"]
+[ext_resource type="Resource" uid="uid://b22uf8ler1fpn" path="res://Card Resources/Ingot.tres" id="10"]
+[ext_resource type="Resource" uid="uid://crnbpnwqkyuov" path="res://Card Resources/Minecart.tres" id="11"]
+[ext_resource type="Resource" uid="uid://bnt8u22tmn3j2" path="res://Card Resources/Mineshaft.tres" id="12"]
+[ext_resource type="Resource" uid="uid://drur7edyc4ouw" path="res://Card Resources/Quarry.tres" id="13"]
+[ext_resource type="Resource" uid="uid://boh3udlk7ycpg" path="res://Card Resources/Smelter.tres" id="14"]
+[ext_resource type="Resource" uid="uid://cdfkxc46dj46f" path="res://Card Resources/Rope.tres" id="15"]
+[ext_resource type="Resource" uid="uid://dqk1kk6jhjhio" path="res://Card Resources/Fruit Bat.tres" id="16"]
+[ext_resource type="Resource" uid="uid://dpftcsskjsfis" path="res://Card Resources/Cave Bug.tres" id="17"]
+[ext_resource type="Resource" uid="uid://dvjovkyyomkyo" path="res://Card Resources/Corkscrew.tres" id="18"]
+[ext_resource type="Resource" uid="uid://cl6832jvhw7lw" path="res://Card Resources/Screwdriver.tres" id="19"]
+[ext_resource type="Resource" uid="uid://drsve2eghk7yf" path="res://Card Resources/Diamond.tres" id="20"]
+[ext_resource type="Resource" uid="uid://bj0ec60347h61" path="res://Card Resources/Gloves.tres" id="21"]
+[ext_resource type="Resource" uid="uid://cp3g1vrqh76pu" path="res://Card Resources/Compass.tres" id="22"]
+[ext_resource type="Resource" uid="uid://bdkdwuw7xej1g" path="res://Card Resources/Chest.tres" id="23"]
+[ext_resource type="Resource" uid="uid://dukouthj4106" path="res://Card Resources/Huge Ore.tres" id="24"]
+[ext_resource type="Resource" uid="uid://dv4jhjc152083" path="res://Card Resources/Huge Scorium.tres" id="25"]
+[ext_resource type="Resource" uid="uid://d1u5k7l313mgd" path="res://Card Resources/Knife.tres" id="26"]
+[ext_resource type="Resource" uid="uid://dxcjt4ush36vi" path="res://Card Resources/Map.tres" id="27"]
+[ext_resource type="Resource" uid="uid://bktq5jru8hy6m" path="res://Card Resources/Pliers.tres" id="28"]
+[ext_resource type="Resource" uid="uid://cgtlm8s28mlwf" path="res://Card Resources/Handsaw.tres" id="29"]
+[ext_resource type="Resource" uid="uid://rcojwumvh68o" path="res://Card Resources/Best Friend.tres" id="30"]
+[ext_resource type="Resource" uid="uid://buil2dht45iek" path="res://Card Resources/Pet Mole.tres" id="31"]
+[ext_resource type="Resource" uid="uid://bkmtcduxj0yci" path="res://Card Resources/Gemstone.tres" id="32"]
+[ext_resource type="Resource" uid="uid://bru7sk0qetub8" path="res://Card Resources/Axolotl.tres" id="33"]
+[ext_resource type="Resource" uid="uid://qs3pj678r7cf" path="res://Card Resources/Anvil.tres" id="34"]
+[ext_resource type="Resource" uid="uid://dg0cmlm6bkqip" path="res://Card Resources/Radar.tres" id="35"]
+[ext_resource type="Resource" uid="uid://ba3byv8vv0gl4" path="res://Card Resources/Aquifer.tres" id="36"]
+[ext_resource type="Resource" uid="uid://7ft0v47smicp" path="res://Card Resources/Bat Cavern.tres" id="37"]
+[ext_resource type="Resource" uid="uid://ujumcrawyenq" path="res://Card Resources/Isopod.tres" id="38"]
+[ext_resource type="Resource" uid="uid://cogmhrq10sspm" path="res://Card Resources/Old Mine.tres" id="39"]
+[ext_resource type="Resource" uid="uid://cqgqs2qmhb5su" path="res://Card Resources/Salamander.tres" id="40"]
+[ext_resource type="Resource" uid="uid://cmex2enon42a8" path="res://Card Resources/Walkie Talkies.tres" id="41"]
+[ext_resource type="Resource" uid="uid://drws3w31d6xsg" path="res://Card Resources/Giant Chasm.tres" id="42"]
+[ext_resource type="Resource" uid="uid://ble6vcc3g1w5s" path="res://Card Resources/Creature.tres" id="43"]
+[ext_resource type="Resource" uid="uid://ccixv8ai7dydi" path="res://Card Resources/Campsite.tres" id="44"]
+[ext_resource type="Resource" uid="uid://c4qmuydhlwmyo" path="res://Card Resources/Wrench.tres" id="45"]
+[ext_resource type="Resource" uid="uid://ct7o6adgvb1ip" path="res://Card Resources/Trowel.tres" id="46"]
+[ext_resource type="Resource" uid="uid://ciomcercb0sqr" path="res://Card Resources/Waterfall.tres" id="47"]
+[ext_resource type="Shader" path="res://Shaders/BackgroundScroll.gdshader" id="48"]
+[ext_resource type="Texture2D" uid="uid://fm2yb1ypegst" path="res://Art/Background Symbols.png" id="49"]
+[ext_resource type="Texture2D" uid="uid://c0dxprqjp6jq2" path="res://Art/Green Banner.png" id="50"]
+[ext_resource type="PackedScene" uid="uid://kyyfggwsfsgx" path="res://UI/ore_collected.tscn" id="51"]
+[ext_resource type="PackedScene" uid="uid://b6ijqlfiscuaj" path="res://UI/deck_display_button.tscn" id="52"]
+[ext_resource type="Texture2D" uid="uid://v83tsn5re248" path="res://Art/StoreTextArt.png" id="53"]
+[ext_resource type="PackedScene" uid="uid://dj4akhspucw4q" path="res://UI/expedition_counter.tscn" id="54"]
+[ext_resource type="Texture2D" uid="uid://dvn3b3ocji568" path="res://Art/Tiny Pickaxe Art.png" id="55"]
+[ext_resource type="Texture2D" uid="uid://cm40vqt7globl" path="res://Art/OreIcon.png" id="56"]
+[ext_resource type="PackedScene" uid="uid://cybvdvfghirgc" path="res://Shop/shop_card_display.tscn" id="57"]
+[ext_resource type="Resource" uid="uid://w66dauhb6vax" path="res://Card Resources/Hammer.tres" id="58"]
+[ext_resource type="Resource" uid="uid://d0n5rbgx0edrt" path="res://Card Resources/Dynamite.tres" id="59"]
+[ext_resource type="PackedScene" uid="uid://dl7toa1ds5go7" path="res://UI/blue_button.tscn" id="60"]
+[ext_resource type="PackedScene" uid="uid://dqctfwfi8byrx" path="res://UI/card_pile_display.tscn" id="61"]
+[ext_resource type="Script" path="res://Game/Controls Display.gd" id="62"]
+[ext_resource type="PackedScene" uid="uid://cusmj1vbv5mqr" path="res://Menus/pause_menu.tscn" id="63"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gog07"]
+shader = ExtResource("48")
+shader_parameter/speed = 0.15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3rrro"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_e3nls"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_5r7h2"]
+events = [SubResource("InputEventKey_e3nls")]
+
+[node name="Shop" type="Control" groups=["Shop"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+shop_pool = [ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7"), ExtResource("8"), ExtResource("9"), ExtResource("10"), ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("15"), ExtResource("16"), ExtResource("17"), ExtResource("18"), ExtResource("19"), ExtResource("20"), ExtResource("21"), ExtResource("22"), ExtResource("23"), ExtResource("24"), ExtResource("25"), ExtResource("26"), ExtResource("27"), ExtResource("28"), ExtResource("29"), ExtResource("30"), ExtResource("31"), ExtResource("32"), ExtResource("33"), ExtResource("4"), ExtResource("34"), ExtResource("35"), ExtResource("36"), ExtResource("37"), ExtResource("38"), ExtResource("39"), ExtResource("40"), ExtResource("41"), ExtResource("42"), ExtResource("43"), ExtResource("44"), ExtResource("45"), ExtResource("46"), ExtResource("47")]
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.06666669994592667, 0.08627449721097946, 0.0784313976764679, 1)
+
+[node name="BackgroundPattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gog07")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("49")
+stretch_mode = 1
+
+[node name="Shop Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Banner" type="TextureRect" parent="Shop Container"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("50")
+
+[node name="OreCollected" parent="Shop Container/Banner" instance=ExtResource("51")]
+offset_left = 888.0
+offset_top = 12.0
+offset_right = 1068.0
+offset_bottom = 84.0
+
+[node name="DeckDisplayButton" parent="Shop Container/Banner" instance=ExtResource("52")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -55.0
+offset_right = -14.0
+offset_bottom = 31.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(66, 57)
+
+[node name="StoreText" type="TextureRect" parent="Shop Container/Banner"]
+visible = false
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 312.0
+offset_bottom = 90.0
+texture = ExtResource("53")
+
+[node name="Expedition Counter" parent="Shop Container/Banner" instance=ExtResource("54")]
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 24.0
+offset_bottom = 12.0
+
+[node name="TextureRect" type="TextureRect" parent="Shop Container/Banner"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 90.0
+offset_bottom = 90.0
+texture = ExtResource("55")
+
+[node name="Play Area" type="Control" parent="Shop Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Reroll" type="Button" parent="Shop Container/Play Area"]
+custom_minimum_size = Vector2(490, 81)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 126.0
+offset_top = -405.0
+offset_right = 616.0
+offset_bottom = -296.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3rrro")
+shortcut = SubResource("Shortcut_5r7h2")
+text = " reroll:"
+icon = ExtResource("56")
+icon_alignment = 2
+
+[node name="UtilityShop" type="HBoxContainer" parent="Shop Container/Play Area"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -252.0
+offset_right = 566.0
+offset_bottom = 72.0
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="ShopCardDisplay" parent="Shop Container/Play Area/UtilityShop" instance=ExtResource("57")]
+layout_mode = 2
+data = ExtResource("58")
+
+[node name="ShopCardDisplay2" parent="Shop Container/Play Area/UtilityShop" instance=ExtResource("57")]
+layout_mode = 2
+data = ExtResource("59")
+
+[node name="CardShop" type="HBoxContainer" parent="Shop Container/Play Area"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1122.0
+offset_top = -252.0
+offset_right = -60.0
+offset_bottom = 72.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="ShopCardDisplay" parent="Shop Container/Play Area/CardShop" instance=ExtResource("57")]
+layout_mode = 2
+
+[node name="ShopCardDisplay2" parent="Shop Container/Play Area/CardShop" instance=ExtResource("57")]
+layout_mode = 2
+
+[node name="ShopCardDisplay3" parent="Shop Container/Play Area/CardShop" instance=ExtResource("57")]
+layout_mode = 2
+
+[node name="ShopCardDisplay4" parent="Shop Container/Play Area/CardShop" instance=ExtResource("57")]
+layout_mode = 2
+
+[node name="Go" parent="Shop Container/Play Area" instance=ExtResource("60")]
+layout_mode = 0
+offset_left = 1626.0
+offset_top = 816.0
+offset_right = 1890.0
+offset_bottom = 925.0
+theme_override_font_sizes/font_size = 72
+text = "go >>"
+
+[node name="CardPileDisplay" parent="." instance=ExtResource("61")]
+visible = false
+layout_mode = 1
+
+[node name="Controls Display" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("62")
+
+[node name="Go" type="Label" parent="Controls Display"]
+visible = false
+layout_mode = 0
+offset_left = 1488.0
+offset_top = 960.0
+offset_right = 1608.0
+offset_bottom = 1033.0
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_shadow_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 72
+text = "(g)"
+
+[node name="Reroll" type="Label" parent="Controls Display"]
+visible = false
+layout_mode = 0
+offset_left = 972.0
+offset_top = 216.0
+offset_right = 1092.0
+offset_bottom = 289.0
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_shadow_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 72
+text = "(r)"
+
+[node name="Deck" type="Label" parent="Controls Display"]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 1662.0
+offset_top = 18.0
+offset_right = 1782.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_shadow_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 72
+text = "(d)"
+
+[node name="Debug Layer" type="CanvasLayer" parent="."]
+
+[node name="Particle Folder" type="Node2D" parent="."]
+
+[node name="Particle Folder CV" type="CanvasLayer" parent="."]
+
+[node name="Pause Menu" parent="." instance=ExtResource("63")]
+visible = false
+
+[connection signal="mouse_entered" from="Shop Container/Play Area/Reroll" to="." method="_on_reroll_mouse_entered"]
+[connection signal="pressed" from="Shop Container/Play Area/Reroll" to="." method="_on_reroll_pressed"]
+[connection signal="mouse_entered" from="Shop Container/Play Area/Go" to="." method="_on_go_mouse_entered"]
+[connection signal="pressed" from="Shop Container/Play Area/Go" to="." method="_on_go_pressed"]

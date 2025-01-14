@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=4]
+
+[ext_resource type="Resource" uid="uid://4e2l07nsnivu" path="res://Card Resources/Abilities/MineExtraValue.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://dxidb1ujilq2d" path="res://Art/Card Artworks/DrillNew.png" id="2"]
+[ext_resource type="Script" path="res://Card System/CardData.gd" id="3"]
+
+[resource]
+script = ExtResource("3")
+name = "Drill"
+description = "YELLOW(Mine) a resource and gain MAG1x its value."
+notes = ""
+card_type = 2
+resource_type = 0
+resource_value = 0
+utility_type = 0
+energy_cost = 3
+plus_cards = 0
+plus_energy = 0
+plus_ore = 0
+plus_score = 0
+ability_magnitude = 3
+ability_magnitude_2 = 0
+ability_magnitude_3 = 0
+ability_1 = ExtResource("1")
+ability_2 = null
+consumable = false
+draw_resources_only = false
+update_visuals_on_deck_change = false
+base_price = 15
+art = ExtResource("2")
+sound_effect_id = "ActionCardMine"

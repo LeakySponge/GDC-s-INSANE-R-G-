@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://framework/resources/fonts/m3x6/pixel_outlined_16.tres" type="FontFile" id=1]
+[ext_resource path="res://framework/ui/modules/animated_bar/animated_bar.gd" type="Script" id=2]
+[ext_resource path="res://framework/ui/modules/animated_bar/animated_bar_under.png" type="Texture2D" id=3]
+[ext_resource path="res://framework/ui/modules/animated_bar/animated_bar_progress.png" type="Texture2D" id=4]
+[ext_resource path="res://framework/ui/modules/animated_bar/animated_bar_over.png" type="Texture2D" id=5]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="AnimatedBar" type="CenterContainer"]
+offset_left = 120.0
+offset_right = 184.0
+offset_bottom = 16.0
+size_flags_horizontal = 4
+script = ExtResource( 2 )
+
+[node name="BackgroundBar" type="TextureProgressBar" parent="."]
+offset_right = 64.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 64, 16 )
+size_flags_horizontal = 4
+value = 100.0
+texture_under = ExtResource( 3 )
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 4 )
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 3
+stretch_margin_right = 2
+stretch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 62.0
+offset_bottom = 13.0
+custom_minimum_size = Vector2( 60, 10 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="ForegroundBar" type="ProgressBar" parent="MarginContainer"]
+offset_right = 60.0
+offset_bottom = 10.0
+custom_minimum_size = Vector2( 60, 10 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fg = SubResource( 4 )
+theme_override_styles/bg = SubResource( 3 )
+value = 60.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="MarginContainer"]
+offset_left = 24.0
+offset_right = 36.0
+offset_bottom = 10.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource( 1 )
+text = "5/5"
+
+[node name="Blink" type="ColorRect" parent="MarginContainer"]
+visible = false
+offset_right = 60.0
+offset_bottom = 10.0
+color = Color( 1, 0.945098, 0.909804, 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="BlinkTimer" type="Timer" parent="."]

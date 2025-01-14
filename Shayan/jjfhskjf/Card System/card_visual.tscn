@@ -1,0 +1,549 @@
+[gd_scene load_steps=21 format=4]
+
+[ext_resource type="Script" path="res://Card System/card_visual.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bjdvsqjwnk585" path="res://Art/CardShadow.png" id="2"]
+[ext_resource type="Shader" path="res://Shaders/fake_3d.gdshader" id="3"]
+[ext_resource type="Texture2D" uid="uid://bdubqdry64prp" path="res://Art/CardBackBlue.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://by8qx6tyx56w4" path="res://Art/CardBaseArt.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://0hnob5jrf6oy" path="res://Art/ResourceValueIndicatorLarge.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://fn8cnenxfidv" path="res://Art/ScoreValueIndicatorLarge.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://61ip3v31x1he" path="res://Art/Card Artworks/Pickaxe.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bw0mo7e7hcy1c" path="res://Art/Card Artworks/Scorium.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://b8hbrdjhn4nrx" path="res://Art/CardDividerArt.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://pl5waumi24x6" path="res://Art/Card Stamp Yellow.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://cn7kbosg5738p" path="res://Art/Flash.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://balnm32anwl2f" path="res://Art/Flash Red.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bmpk2ebsjvcw7" path="res://Art/CardCostSymbolSquare.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://cs5sboohodq7d" path="res://Art/SelectionAnimation-Sheet.png" id="15"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fyyms"]
+resource_local_to_scene = true
+shader = ExtResource("3")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlsgi"]
+shader = ExtResource("3")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="Animation" id="Animation_jfaf5"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_13vnk"]
+length = 0.001000000047497451
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yd0s5"]
+_data = {
+"Idle": SubResource("Animation_jfaf5"),
+"RESET": SubResource("Animation_13vnk")
+}
+
+[node name="CardVisual" type="Control"]
+custom_minimum_size = Vector2(228, 336)
+layout_mode = 3
+anchor_right = 0.1190000027418137
+anchor_bottom = 0.3109999895095825
+offset_right = -0.480010986328125
+offset_bottom = 0.1199650019407272
+pivot_offset = Vector2(114, 168)
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Shadow" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.4784309864044189)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2")
+
+[node name="Art Viewport" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_fyyms")
+custom_minimum_size = Vector2(228, 336)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(114, 168)
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="Art Viewport"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(246, 354)
+render_target_update_mode = 4
+
+[node name="Art" type="Control" parent="Art Viewport/SubViewport"]
+custom_minimum_size = Vector2(228, 336)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 237.0
+offset_bottom = 345.0
+pivot_offset = Vector2(114, 168)
+mouse_filter = 2
+
+[node name="Glow" type="Panel" parent="Art Viewport/SubViewport/Art"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Back" type="Control" parent="Art Viewport/SubViewport/Art"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(114, 168)
+mouse_filter = 2
+
+[node name="Texture" type="TextureRect" parent="Art Viewport/SubViewport/Art/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4")
+
+[node name="Front" type="Control" parent="Art Viewport/SubViewport/Art"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(114, 168)
+mouse_filter = 2
+
+[node name="Base Art" type="TextureRect" parent="Art Viewport/SubViewport/Art/Front"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5")
+
+[node name="ResourceValue" type="TextureRect" parent="Art Viewport/SubViewport/Art/Front"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Art Viewport/SubViewport/Art/Front/ResourceValue"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 30.0
+offset_right = -78.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="Art Viewport/SubViewport/Art/Front/ResourceValue/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(26, 26)
+render_target_update_mode = 0
+
+[node name="ResourceLabel" type="Label" parent="Art Viewport/SubViewport/Art/Front/ResourceValue/SubViewportContainer/SubViewport"]
+custom_minimum_size = Vector2(16, 0)
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 22.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_outline_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 12
+text = "2"
+horizontal_alignment = 1
+
+[node name="ScoreValue" type="TextureRect" parent="Art Viewport/SubViewport/Art/Front"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Art Viewport/SubViewport/Art/Front/ScoreValue"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 30.0
+offset_right = -78.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="Art Viewport/SubViewport/Art/Front/ScoreValue/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(26, 26)
+render_target_update_mode = 0
+
+[node name="ScoreLabel" type="Label" parent="Art Viewport/SubViewport/Art/Front/ScoreValue/SubViewportContainer/SubViewport"]
+custom_minimum_size = Vector2(16, 0)
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 22.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_outline_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 12
+text = "1"
+horizontal_alignment = 1
+
+[node name="HalfCardArtwork" type="TextureRect" parent="Art Viewport/SubViewport/Art/Front"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 54.0
+offset_bottom = -138.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8")
+
+[node name="FullCardArtwork" type="TextureRect" parent="Art Viewport/SubViewport/Art/Front"]
+visible = false
+layout_mode = 0
+offset_top = 60.0
+offset_right = 228.0
+offset_bottom = 312.0
+mouse_filter = 2
+texture = ExtResource("9")
+
+[node name="Divider" type="TextureRect" parent="Art Viewport/SubViewport/Art/Front"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10")
+
+[node name="Labels" type="Control" parent="Art Viewport/SubViewport/Art/Front"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Name Container" type="SubViewportContainer" parent="Art Viewport/SubViewport/Art/Front/Labels"]
+custom_minimum_size = Vector2(204, 60)
+layout_mode = 0
+offset_left = 12.0
+offset_right = 216.0
+offset_bottom = 60.0
+pivot_offset = Vector2(72, 36)
+size_flags_horizontal = 3
+mouse_filter = 2
+stretch = true
+stretch_shrink = 6
+
+[node name="SubViewport" type="SubViewport" parent="Art Viewport/SubViewport/Art/Front/Labels/Name Container"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(34, 10)
+render_target_update_mode = 4
+
+[node name="Name Label" type="Label" parent="Art Viewport/SubViewport/Art/Front/Labels/Name Container/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_outline_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 6
+text = "card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Small Name Container" type="SubViewportContainer" parent="Art Viewport/SubViewport/Art/Front/Labels"]
+visible = false
+custom_minimum_size = Vector2(204, 60)
+layout_mode = 0
+offset_left = 12.0
+offset_right = 216.0
+offset_bottom = 60.0
+pivot_offset = Vector2(72, 36)
+size_flags_horizontal = 3
+mouse_filter = 2
+stretch = true
+stretch_shrink = 4
+
+[node name="SubViewport" type="SubViewport" parent="Art Viewport/SubViewport/Art/Front/Labels/Small Name Container"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(51, 15)
+render_target_update_mode = 0
+
+[node name="Name Label" type="Label" parent="Art Viewport/SubViewport/Art/Front/Labels/Small Name Container/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_outline_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 6
+text = "small card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TypeContainer" type="SubViewportContainer" parent="Art Viewport/SubViewport/Art/Front/Labels"]
+layout_mode = 1
+offset_top = 294.0
+offset_right = 222.0
+offset_bottom = 330.0
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="Art Viewport/SubViewport/Art/Front/Labels/TypeContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(74, 12)
+render_target_update_mode = 4
+
+[node name="TypeLabel" type="Label" parent="Art Viewport/SubViewport/Art/Front/Labels/TypeContainer/SubViewport"]
+custom_minimum_size = Vector2(228, 48)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_outline_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 6
+text = "type"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="Art Viewport/SubViewport/Art/Front/Labels"]
+custom_minimum_size = Vector2(192, 66)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 33.0
+offset_right = -12.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]Placeholder description[/center]"
+autowrap_mode = 2
+
+[node name="Stamp" type="TextureRect" parent="Art Viewport/SubViewport/Art"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 72.0
+offset_right = 90.0
+offset_bottom = 144.0
+pivot_offset = Vector2(36, 36)
+texture = ExtResource("11")
+stretch_mode = 2
+
+[node name="Flash" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12")
+
+[node name="Flash Red" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13")
+
+[node name="Cost Viewport" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_tlsgi")
+layout_mode = 0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 36.0
+offset_bottom = 36.0
+pivot_offset = Vector2(33, 33)
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="Cost Viewport"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(66, 66)
+render_target_update_mode = 4
+
+[node name="Cost Indicator" type="TextureRect" parent="Cost Viewport/SubViewport"]
+offset_right = 66.0
+offset_bottom = 66.0
+pivot_offset = Vector2(33, 33)
+mouse_filter = 2
+texture = ExtResource("14")
+
+[node name="CostLabel" type="Label" parent="Cost Viewport/SubViewport/Cost Indicator"]
+layout_mode = 1
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 51.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.9686269760131836, 1, 0.9725490212440491, 1)
+theme_override_colors/font_shadow_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_colors/font_outline_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 36
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Selection Indicator" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Selection Indicator"]
+position = Vector2(-72, -66)
+texture = ExtResource("15")
+centered = false
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Selection Indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_yd0s5")
+}

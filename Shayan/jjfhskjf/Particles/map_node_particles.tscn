@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=4]
+
+[ext_resource type="PackedScene" uid="uid://dhvdc5m7wqvvm" path="res://Particles/particle_deleter.tscn" id="1"]
+
+[sub_resource type="Curve" id="Curve_ds5pi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7471910119056702, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Map Node Particles" type="CPUParticles2D"]
+z_index = -1
+amount = 1
+lifetime = 2.0
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+damping_min = 500.0
+damping_max = 1000.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_ds5pi")
+
+[node name="ParticleDeleter" parent="." instance=ExtResource("1")]

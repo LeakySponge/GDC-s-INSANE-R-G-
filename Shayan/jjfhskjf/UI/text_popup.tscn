@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=4]
+
+[ext_resource type="Script" path="res://UI/text_popup.gd" id="1"]
+
+[node name="Text Popup" type="Label"]
+offset_right = 1.0
+offset_bottom = 33.0
+theme_override_colors/font_outline_color = Color(0.05490199849009514, 0.06666669994592667, 0.062745101749897, 1)
+theme_override_constants/outline_size = 4
+script = ExtResource("1")

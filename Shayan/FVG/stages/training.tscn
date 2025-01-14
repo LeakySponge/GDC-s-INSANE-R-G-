@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b42ngnlmqyek"]
+
+[ext_resource type="Script" path="res://stages/training.gd" id="1_0v764"]
+[ext_resource type="Texture2D" uid="uid://646sud8ddxnp" path="res://addons/kenney_prototype_textures/green/texture_13.png" id="1_7wbxs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4383"]
+albedo_texture = ExtResource("1_7wbxs")
+
+[sub_resource type="BoxMesh" id="BoxMesh_8m8rk"]
+
+[node name="training" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.987461, 0.157865, 0, -0.157865, 0.987461, 0, 1.13422, 2.86459)
+script = ExtResource("1_0v764")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0.143311, -0.351367, -4.04182)
+size = Vector3(7.68701, 1, 7.07471)
+
+[node name="player1spawn" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -4.47035e-08, 0, 4.47035e-08, 1, -0.537524, 0.0511168, -2.93104)
+
+[node name="thereitis" type="MeshInstance3D" parent="player1spawn"]
+transform = Transform3D(0.25, 0, 0, 0, 0.246104, -0.043962, 0, 0.043962, 0.246104, 0.0249943, 0.153168, -0.780308)
+material_override = SubResource("StandardMaterial3D_o4383")
+mesh = SubResource("BoxMesh_8m8rk")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

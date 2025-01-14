@@ -1,0 +1,676 @@
+[gd_scene load_steps=34 format=4]
+
+[ext_resource type="Script" path="res://Tutorial/tutorial_panel.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dcoptsn8erdwh" path="res://UI/panel.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dl7toa1ds5go7" path="res://UI/blue_button.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://dvn3b3ocji568" path="res://Art/Tiny Pickaxe Art.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c5md8uxmkwcqr" path="res://Art/Card Artworks/RopeCoil.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c5ujtqvym5wxb" path="res://Art/Card Artworks/Map.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://wvmjpaju54uw" path="res://Card System/inspect_card.tscn" id="7"]
+[ext_resource type="Shader" path="res://Shaders/fake_3d.gdshader" id="8"]
+[ext_resource type="Resource" uid="uid://btrq3wakdbphk" path="res://Card Resources/Big Ore.tres" id="9"]
+[ext_resource type="Resource" uid="uid://b5choay1503p7" path="res://Card Resources/Big Scorium.tres" id="10"]
+[ext_resource type="Texture2D" uid="uid://dj56uhep2dp8i" path="res://Art/EnergyWithArrow.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://dhd4svnwjjx4n" path="res://Art/Energy Indicator Art.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://bsjabq8r1oejj" path="res://Art/Score Bar Example.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bsjpy8ru31xyi" path="res://Art/Time Bar Example.png" id="14"]
+[ext_resource type="Resource" uid="uid://bw7176yrtr6oo" path="res://Card Resources/Giant Ore.tres" id="15"]
+[ext_resource type="Resource" uid="uid://w66dauhb6vax" path="res://Card Resources/Hammer.tres" id="16"]
+[ext_resource type="Resource" uid="uid://boh3udlk7ycpg" path="res://Card Resources/Smelter.tres" id="17"]
+[ext_resource type="Texture2D" uid="uid://cg757wfjc3yic" path="res://Art/Card Artworks/Ore 5.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://c5jfb24jc35yb" path="res://Art/Card Artworks/Scorium 6.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://be6pxo5k3ji2a" path="res://Art/Card Artworks/Gemstone.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://cwjj5ymxqurc7" path="res://Art/Card Artworks/Anvil.png" id="21"]
+[ext_resource type="Resource" uid="uid://cmomlw60y520b" path="res://Card Resources/Tutorial_Ore.tres" id="22"]
+[ext_resource type="Texture2D" uid="uid://cs5sboohodq7d" path="res://Art/SelectionAnimation-Sheet.png" id="23"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udkmq"]
+resource_local_to_scene = true
+shader = ExtResource("8")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ky27d"]
+resource_local_to_scene = true
+shader = ExtResource("8")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvle0"]
+resource_local_to_scene = true
+shader = ExtResource("8")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yk4i"]
+resource_local_to_scene = true
+shader = ExtResource("8")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6ba4"]
+resource_local_to_scene = true
+shader = ExtResource("8")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1vvl"]
+resource_local_to_scene = true
+shader = ExtResource("8")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_objc7"]
+resource_local_to_scene = true
+shader = ExtResource("8")
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="Animation" id="Animation_jfaf5"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_13vnk"]
+length = 0.001000000047497451
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yd0s5"]
+_data = {
+"Idle": SubResource("Animation_jfaf5"),
+"RESET": SubResource("Animation_13vnk")
+}
+
+[node name="Tutorial Panel" type="Control"]
+custom_minimum_size = Vector2(1248, 624)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -624.0
+offset_top = -312.0
+offset_right = 624.0
+offset_bottom = 312.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Panel" parent="." instance=ExtResource("2")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 30
+
+[node name="Back" type="Button" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "<<"
+
+[node name="Forward" parent="Panel/MarginContainer" instance=ExtResource("3")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = ">>"
+
+[node name="Skip" type="Button" parent="Panel/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "skip"
+
+[node name="Finish" parent="Panel/MarginContainer" instance=ExtResource("3")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "finish"
+
+[node name="Title" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "how to play"
+horizontal_alignment = 1
+
+[node name="Counter" type="RichTextLabel" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "1/9"
+scroll_active = false
+
+[node name="TinyPickaxeArt" type="Sprite2D" parent="Panel/MarginContainer"]
+position = Vector2(402, 54)
+texture = ExtResource("4")
+
+[node name="TinyPickaxeArt2" type="Sprite2D" parent="Panel/MarginContainer"]
+position = Vector2(840, 54)
+texture = ExtResource("4")
+flip_h = true
+
+[node name="Pages" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Page 1" type="Control" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Pages/Page 1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -140.0
+offset_right = 340.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Retromine is a mining deckbuilder where you create a deck of cards to win.
+
+
+Your goal is to reach the center of the earth by surviving 15 dangerous expeditions on your way to the [color=a651b6]core[/color]."
+scroll_active = false
+
+[node name="RopeCoil" type="Sprite2D" parent="Pages/Page 1"]
+position = Vector2(198, 456)
+texture = ExtResource("5")
+
+[node name="Map" type="Sprite2D" parent="Pages/Page 1"]
+position = Vector2(1020, 450)
+texture = ExtResource("6")
+
+[node name="Page 2" type="Control" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Pages/Page 2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -546.0
+offset_top = -72.0
+offset_right = -84.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Mine [color=d43a2b]ore[/color] by playing ore cards. 
+
+
+Score [color=e5bf46]points[/color] by playing scorium cards."
+scroll_active = false
+
+[node name="InspectCard" parent="Pages/Page 2" instance=ExtResource("7")]
+material = SubResource("ShaderMaterial_udkmq")
+layout_mode = 1
+offset_left = 6.0
+offset_top = -144.0
+offset_right = 234.0
+offset_bottom = 192.0
+data = ExtResource("9")
+
+[node name="InspectCard2" parent="Pages/Page 2" instance=ExtResource("7")]
+material = SubResource("ShaderMaterial_ky27d")
+layout_mode = 1
+offset_left = 276.0
+offset_top = -144.0
+offset_right = 504.0
+offset_bottom = 192.0
+data = ExtResource("10")
+
+[node name="Page 3" type="Control" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Pages/Page 3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -120.0
+offset_right = 362.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Each card costs [color=49b644]energy[/color] to play. Your current energy is represented by the number in the green square. 
+
+
+You have 3 energy to spend each turn. When you run out of energy, end your turn."
+scroll_active = false
+
+[node name="EnergyWithArrow" type="Sprite2D" parent="Pages/Page 3"]
+position = Vector2(1088, 292)
+texture = ExtResource("11")
+
+[node name="EnergyIndicatorArt" type="Sprite2D" parent="Pages/Page 3"]
+position = Vector2(176, 292)
+texture = ExtResource("12")
+
+[node name="Page 4" type="Control" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Pages/Page 4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -544.0
+offset_top = -164.0
+offset_right = 550.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]To survive each expedition, you must score enough points before the timer runs out. If you don't, the caves will collapse in on you, and it's [color=d43a2b]game over[/color]!
+"
+scroll_active = false
+
+[node name="Text2" type="RichTextLabel" parent="Pages/Page 4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 248.0
+offset_top = 20.0
+offset_right = 410.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "time bar"
+scroll_active = false
+
+[node name="Text3" type="RichTextLabel" parent="Pages/Page 4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 20.0
+offset_right = -226.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "score bar"
+scroll_active = false
+
+[node name="ScoreBarExample" type="Sprite2D" parent="Pages/Page 4"]
+position = Vector2(310, 428)
+texture = ExtResource("13")
+
+[node name="TimeBarExample" type="Sprite2D" parent="Pages/Page 4"]
+position = Vector2(934, 428)
+texture = ExtResource("14")
+
+[node name="Page 5" type="Control" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Pages/Page 5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -528.0
+offset_top = -90.0
+offset_right = 165.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]If you reach the score requirement early, take advantage by mining as much [color=d43a2b]ore[/color] as possible before the expedition ends!
+"
+scroll_active = false
+
+[node name="InspectCard" parent="Pages/Page 5" instance=ExtResource("7")]
+material = SubResource("ShaderMaterial_uvle0")
+layout_mode = 1
+offset_left = 246.0
+offset_top = -180.0
+offset_right = 474.0
+offset_bottom = 156.0
+data = ExtResource("15")
+
+[node name="Page 6" type="Control" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Pages/Page 6"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -138.0
+offset_right = 300.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Survive an expedition, and you'll enter a shop where you can spend your ore to [color=2180f2]upgrade[/color] your deck with more powerful cards.
+
+
+Try to find the best synergies between cards to create your own powerful combos!"
+scroll_active = false
+
+[node name="InspectCard" parent="Pages/Page 6" instance=ExtResource("7")]
+material = SubResource("ShaderMaterial_1yk4i")
+layout_mode = 1
+offset_left = -576.0
+offset_top = -174.0
+offset_right = -348.0
+offset_bottom = 162.0
+data = ExtResource("16")
+
+[node name="InspectCard2" parent="Pages/Page 6" instance=ExtResource("7")]
+material = SubResource("ShaderMaterial_f6ba4")
+layout_mode = 1
+offset_left = 354.0
+offset_top = -174.0
+offset_right = 582.0
+offset_bottom = 162.0
+data = ExtResource("17")
+
+[node name="Page 7" type="Control" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Pages/Page 7"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -116.5
+offset_right = 375.0
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Be careful - you must strike a perfect balance between [color=d43a2b]ore[/color] and [color=e5bf46]score[/color]. 
+
+
+You must mine as much ore as possible to upgrade your deck, while still collecting enough score to survive."
+scroll_active = false
+
+[node name="Ore5" type="Sprite2D" parent="Pages/Page 7"]
+position = Vector2(150, 300)
+texture = ExtResource("18")
+
+[node name="Scorium6" type="Sprite2D" parent="Pages/Page 7"]
+position = Vector2(1104, 306)
+texture = ExtResource("19")
+
+[node name="Page 8" type="Control" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Pages/Page 8"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -313.5
+offset_top = -137.0
+offset_right = 313.5
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Retromine is a challenging game. If you fail, don't worry - just dust off your tools and try again!
+
+
+Dig your way to the center of the earth and [color=a651b6]reach the core[/color] to win. Good luck!"
+scroll_active = false
+
+[node name="Gemstone" type="Sprite2D" parent="Pages/Page 8"]
+position = Vector2(264, 468)
+texture = ExtResource("20")
+
+[node name="Anvil" type="Sprite2D" parent="Pages/Page 8"]
+position = Vector2(996, 480)
+texture = ExtResource("21")
+
+[node name="Old Page Holder" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Page 4" type="Control" parent="Old Page Holder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Old Page Holder/Page 4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -132.0
+offset_right = -12.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center][color=a651b6]Tool[/color] cards are played together with resource cards. 
+
+
+When played with a tool, resources cost zero energy. Instead, they use the energy cost of the tool."
+scroll_active = false
+
+[node name="InspectCard" parent="Old Page Holder/Page 4" instance=ExtResource("7")]
+material = SubResource("ShaderMaterial_e1vvl")
+layout_mode = 1
+offset_left = 48.0
+offset_top = -180.0
+offset_right = 276.0
+offset_bottom = 156.0
+
+[node name="InspectCard2" parent="Old Page Holder/Page 4" instance=ExtResource("7")]
+material = SubResource("ShaderMaterial_objc7")
+layout_mode = 1
+offset_left = 336.0
+offset_top = -180.0
+offset_right = 564.0
+offset_bottom = 156.0
+data = ExtResource("22")
+
+[node name="Selection Indicator" type="Control" parent="Old Page Holder/Page 4/InspectCard2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Old Page Holder/Page 4/InspectCard2/Selection Indicator"]
+position = Vector2(-72, -66)
+texture = ExtResource("23")
+centered = false
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Old Page Holder/Page 4/InspectCard2/Selection Indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_yd0s5")
+}
+autoplay = "Idle"
+
+[connection signal="mouse_entered" from="Panel/MarginContainer/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="Panel/MarginContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="mouse_entered" from="Panel/MarginContainer/Forward" to="." method="_on_forward_mouse_entered"]
+[connection signal="pressed" from="Panel/MarginContainer/Forward" to="." method="_on_forward_pressed"]
+[connection signal="mouse_entered" from="Panel/MarginContainer/Skip" to="." method="_on_skip_mouse_entered"]
+[connection signal="pressed" from="Panel/MarginContainer/Skip" to="." method="_on_skip_pressed"]
+[connection signal="mouse_entered" from="Panel/MarginContainer/Finish" to="." method="_on_finish_mouse_entered"]
+[connection signal="pressed" from="Panel/MarginContainer/Finish" to="." method="_on_finish_pressed"]

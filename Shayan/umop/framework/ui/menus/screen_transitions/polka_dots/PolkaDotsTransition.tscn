@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://framework/ui/menus/screen_transitions/base_transition/BaseTransition.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float progress : hint_range(0, 1);
+
+// Size of each diamond, in pixels.
+uniform float diamondPixelSize = 10.0;
+
+void fragment() {
+    float xFraction = fract(FRAGCOORD.x / diamondPixelSize);
+    float yFraction = fract(FRAGCOORD.y / diamondPixelSize);
+    
+    float xDistance = abs(xFraction - 0.5);
+    float yDistance = abs(yFraction - 0.5);
+    
+    if (xDistance + yDistance + UV.x + UV.y > progress * 4.0) {
+        discard;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/progress = 1.0
+shader_param/diamondPixelSize = 14.0
+
+[node name="PolkaDotsTransition" instance=ExtResource( 1 )]
+close_duration = 0.4
+hide_duration = 0.0
+open_duration = 0.4
+start_value = 0.0
+end_value = 0.9
+
+[node name="ColorRect" parent="." index="0"]
+material = SubResource( 2 )

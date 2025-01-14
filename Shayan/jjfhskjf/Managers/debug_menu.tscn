@@ -1,0 +1,214 @@
+[gd_scene load_steps=7 format=4]
+
+[ext_resource type="Script" path="res://Managers/debug_menu.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dcoptsn8erdwh" path="res://UI/panel.tscn" id="2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_as4d8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qxuac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqim2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8aotd"]
+
+[node name="Debug Menu" type="Control"]
+z_index = 100
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 1026.0
+offset_bottom = 768.0
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_as4d8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qxuac")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bqim2")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8aotd")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" parent="Menu" instance=ExtResource("2")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 24.0
+offset_right = 592.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 40
+text = "debug menu"
+
+[node name="Resources" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 96.0
+offset_right = 270.0
+offset_bottom = 609.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Menu/Resources"]
+layout_mode = 2
+text = "resources"
+horizontal_alignment = 1
+
+[node name="Bumper" type="Control" parent="Menu/Resources"]
+layout_mode = 2
+
+[node name="One Ore" type="Button" parent="Menu/Resources"]
+layout_mode = 2
+mouse_filter = 1
+text = "+5 ore"
+
+[node name="More Ore" type="Button" parent="Menu/Resources"]
+layout_mode = 2
+text = "+50 ore"
+
+[node name="One Score" type="Button" parent="Menu/Resources"]
+layout_mode = 2
+text = "+5 score"
+
+[node name="More Score" type="Button" parent="Menu/Resources"]
+layout_mode = 2
+text = "+50 score"
+
+[node name="Plus Energy" type="Button" parent="Menu/Resources"]
+layout_mode = 2
+text = "+1 energy"
+
+[node name="Lose Ore" type="Button" parent="Menu/Resources"]
+visible = false
+layout_mode = 2
+disabled = true
+text = "lose ore"
+
+[node name="Lose Score" type="Button" parent="Menu/Resources"]
+visible = false
+layout_mode = 2
+disabled = true
+text = "lose score"
+
+[node name="Cards" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 96.0
+offset_right = 570.0
+offset_bottom = 609.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Menu/Cards"]
+layout_mode = 2
+text = "cards"
+horizontal_alignment = 1
+
+[node name="Bumper" type="Control" parent="Menu/Cards"]
+layout_mode = 2
+
+[node name="Draw One" type="Button" parent="Menu/Cards"]
+layout_mode = 2
+text = "draw 1"
+
+[node name="Draw Five" type="Button" parent="Menu/Cards"]
+layout_mode = 2
+text = "draw 5"
+
+[node name="Discard One" type="Button" parent="Menu/Cards"]
+layout_mode = 2
+text = "discard 1"
+
+[node name="Discard Five" type="Button" parent="Menu/Cards"]
+layout_mode = 2
+text = "discard 5"
+
+[node name="Discard All" type="Button" parent="Menu/Cards"]
+layout_mode = 2
+text = "discard X"
+
+[node name="Utilities" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 96.0
+offset_right = 870.0
+offset_bottom = 372.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Menu/Utilities"]
+layout_mode = 2
+text = "utilities"
+horizontal_alignment = 1
+
+[node name="Bumper" type="Control" parent="Menu/Utilities"]
+layout_mode = 2
+
+[node name="Win Expo" type="Button" parent="Menu/Utilities"]
+layout_mode = 2
+text = "win expo"
+
+[node name="Win Game" type="Button" parent="Menu/Utilities"]
+layout_mode = 2
+text = "win game"
+
+[node name="Lose Game" type="Button" parent="Menu/Utilities"]
+layout_mode = 2
+text = "lose game"
+
+[node name="Start Turn" type="Button" parent="Menu/Utilities"]
+visible = false
+layout_mode = 2
+text = "start turn"
+
+[node name="End Turn" type="Button" parent="Menu/Utilities"]
+layout_mode = 2
+text = "end turn"
+
+[node name="Start Expo" type="Button" parent="Menu/Utilities"]
+visible = false
+layout_mode = 2
+text = "start expo"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Menu/Resources/One Ore" to="." method="_on_one_ore_pressed"]
+[connection signal="pressed" from="Menu/Resources/More Ore" to="." method="_on_more_ore_pressed"]
+[connection signal="pressed" from="Menu/Resources/One Score" to="." method="_on_one_score_pressed"]
+[connection signal="pressed" from="Menu/Resources/More Score" to="." method="_on_more_score_pressed"]
+[connection signal="pressed" from="Menu/Resources/Plus Energy" to="." method="_on_plus_energy_pressed"]
+[connection signal="pressed" from="Menu/Cards/Draw One" to="." method="_on_draw_one_pressed"]
+[connection signal="pressed" from="Menu/Cards/Draw Five" to="." method="_on_draw_five_pressed"]
+[connection signal="pressed" from="Menu/Cards/Discard One" to="." method="_on_discard_one_pressed"]
+[connection signal="pressed" from="Menu/Cards/Discard Five" to="." method="_on_discard_five_pressed"]
+[connection signal="pressed" from="Menu/Cards/Discard All" to="." method="_on_discard_all_pressed"]
+[connection signal="pressed" from="Menu/Utilities/Win Expo" to="." method="_on_win_expo_pressed"]
+[connection signal="pressed" from="Menu/Utilities/Win Game" to="." method="_on_win_game_pressed"]
+[connection signal="pressed" from="Menu/Utilities/Lose Game" to="." method="_on_lose_game_pressed"]
+[connection signal="pressed" from="Menu/Utilities/Start Turn" to="." method="_on_start_turn_pressed"]
+[connection signal="pressed" from="Menu/Utilities/End Turn" to="." method="_on_end_turn_pressed"]
+[connection signal="pressed" from="Menu/Utilities/Start Expo" to="." method="_on_start_expo_pressed"]

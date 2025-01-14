@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=3 uid="uid://be8bshs6jrxm8"]
+
+[ext_resource type="Theme" uid="uid://dfvc5d7163e7j" path="res://framework/resources/ui_theme.tres" id="1"]
+[ext_resource type="FontFile" path="res://framework/resources/fonts/m3x6/pixel_16.tres" id="2"]
+[ext_resource type="FontFile" path="res://framework/resources/fonts/m3x6/pixel_32.tres" id="3"]
+[ext_resource type="Script" path="res://framework/ui/menus/game_over/game_over_menu.gd" id="4"]
+[ext_resource type="PackedScene" path="res://framework/ui/modules/menu_button/MenuButton.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://framework/ui/modules/cursor/Cursor.tscn" id="6"]
+[ext_resource type="AudioStream" uid="uid://bsb2tcea15bia" path="res://game/restart_game_01.wav" id="7"]
+[ext_resource type="AudioStream" uid="uid://d3p3keebvqo2w" path="res://game/restart_game_02.wav" id="8"]
+[ext_resource type="PackedScene" path="res://framework/node_modules/audio_players/detachable_audio_player/DetachableAudioPlayer.tscn" id="9"]
+[ext_resource type="AudioStream" uid="uid://bh70w2q2oueqj" path="res://game/menu_impact_01.wav" id="10"]
+[ext_resource type="AudioStream" uid="uid://brkh56wl252hw" path="res://game/menu_impact_02.wav" id="11"]
+[ext_resource type="AudioStream" uid="uid://cfeivh3rw2ss7" path="res://game/menu_impact_03.wav" id="12"]
+[ext_resource type="AudioStream" uid="uid://cvhwffoltfe1u" path="res://game/restart_game_03.wav" id="13"]
+
+[node name="GameOver" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("4")
+
+[node name="Menu" type="MarginContainer" parent="."]
+modulate = Color(0.917647, 0.831373, 0.666667, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.768627)
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Menu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "~ GAME OVER ~"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(46, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Hiscore" type="Label" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "HISCORE: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewHiscore" type="Label" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.905882, 0.380392, 1)
+theme_override_fonts/font = ExtResource("2")
+text = "NEW HISCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalScore" type="Label" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("5")]
+layout_mode = 2
+text = "RESTART"
+
+[node name="RandomAudioPlayer" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton/PressedSound" index="0"]
+min_pitch = 1.2
+max_pitch = 1.3
+
+[node name="AudioStreamPlayer" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton/PressedSound/RandomAudioPlayer" index="0"]
+stream = null
+bus = &"Master"
+
+[node name="AudioStreamPlayer2" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton/PressedSound/RandomAudioPlayer" index="1"]
+stream = null
+bus = &"Master"
+
+[node name="AudioStreamPlayer3" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton/HoverSound/RandomAudioPlayer" index="0"]
+bus = &"Master"
+
+[node name="MainMenuButton" parent="Menu/CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource("5")]
+visible = false
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="Cursor" parent="." instance=ExtResource("6")]
+
+[node name="ImpactSound" parent="." instance=ExtResource("9")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ImpactSound/RandomAudioPlayer" index="0"]
+stream = ExtResource("10")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="ImpactSound/RandomAudioPlayer" index="1"]
+stream = ExtResource("11")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="ImpactSound/RandomAudioPlayer" index="2"]
+stream = ExtResource("12")
+
+[node name="RestartSound" parent="." instance=ExtResource("9")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RestartSound/RandomAudioPlayer" index="0"]
+stream = ExtResource("7")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="RestartSound/RandomAudioPlayer" index="1"]
+stream = ExtResource("8")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="RestartSound/RandomAudioPlayer" index="2"]
+stream = ExtResource("13")
+
+[editable path="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton"]
+[editable path="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton/PressedSound"]
+[editable path="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton/PressedSound/RandomAudioPlayer"]
+[editable path="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton/HoverSound"]
+[editable path="Menu/CenterContainer/VBoxContainer/VBoxContainer/RestartButton/HoverSound/RandomAudioPlayer"]
+[editable path="ImpactSound"]
+[editable path="ImpactSound/RandomAudioPlayer"]
+[editable path="RestartSound"]
+[editable path="RestartSound/RandomAudioPlayer"]

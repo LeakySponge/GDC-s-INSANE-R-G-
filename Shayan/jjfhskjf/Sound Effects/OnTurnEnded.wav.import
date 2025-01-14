@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://plrgsv04nbc1"
+path="res://.godot/imported/OnTurnEnded.wav-e38101395f921baff987a3f8e67a9bb9.sample"
+
+[deps]
+
+source_file="res://Sound Effects/OnTurnEnded.wav"
+dest_files=["res://.godot/imported/OnTurnEnded.wav-e38101395f921baff987a3f8e67a9bb9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

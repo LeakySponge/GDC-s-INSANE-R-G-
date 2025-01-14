@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqq3tfadu5c2l"]
+
+[ext_resource type="Texture2D" uid="uid://br3sb66fphwiv" path="res://Arcade - Space Invaders - Game Graphics and Color Overlays.png" id="2_td72e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l57le"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1oki"]
+atlas = ExtResource("2_td72e")
+region = Rect2(1, 1, 15, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isy7l"]
+atlas = ExtResource("2_td72e")
+region = Rect2(1, 11, 15, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u25h0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1oki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isy7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkxw8"]
+size = Vector2(9, 8)
+
+[node name="Critty" type="StaticBody2D"]
+scale = Vector2(3, 3)
+physics_material_override = SubResource("PhysicsMaterial_l57le")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_u25h0")
+frame_progress = 0.849246
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_dkxw8")

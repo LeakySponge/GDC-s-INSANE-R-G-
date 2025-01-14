@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bganc0lk3xmli"
+path="res://.godot/imported/song18.mp3-7ffca5b2a8e14aa94b55c44648e1fa0b.mp3str"
+
+[deps]
+
+source_file="res://Music and Ambience/song18.mp3"
+dest_files=["res://.godot/imported/song18.mp3-7ffca5b2a8e14aa94b55c44648e1fa0b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,12 @@
+[gd_scene load_steps=7 format=4]
+
+[ext_resource type="Script" path="res://Managers/deck_manager.gd" id="1"]
+[ext_resource type="Resource" uid="uid://cki8accocjugy" path="res://Card Resources/Ore.tres" id="2"]
+[ext_resource type="Resource" uid="uid://r1wanhfxnbsc" path="res://Card Resources/Two Ore.tres" id="3"]
+[ext_resource type="Resource" uid="uid://jnqh73ngpv6j" path="res://Card Resources/Scorium.tres" id="4"]
+[ext_resource type="Resource" uid="uid://pupv5sqyeff" path="res://Card Resources/Two Scorium.tres" id="5"]
+[ext_resource type="Resource" uid="uid://do4w68le5veux" path="res://Card Resources/Prospect.tres" id="6"]
+
+[node name="DeckManager" type="Node"]
+script = ExtResource("1")
+starting_deck = [ExtResource("2"), ExtResource("2"), ExtResource("2"), ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("4"), ExtResource("4"), ExtResource("5"), ExtResource("6")]

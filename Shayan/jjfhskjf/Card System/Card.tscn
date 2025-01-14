@@ -1,0 +1,97 @@
+[gd_scene load_steps=15 format=4]
+
+[ext_resource type="Script" path="res://Card System/card.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bvoton0v0doc0" path="res://Card System/card_visual.tscn" id="2"]
+[ext_resource type="Script" path="res://Card System/State Machine/CardStateMachine.gd" id="3"]
+[ext_resource type="Script" path="res://Card System/State Machine/CardBaseState.gd" id="4"]
+[ext_resource type="Script" path="res://Card System/State Machine/CardDraggingState.gd" id="5"]
+[ext_resource type="Script" path="res://Card System/State Machine/CardDiscardState.gd" id="6"]
+[ext_resource type="Script" path="res://Card System/State Machine/CardAimingState.gd" id="7"]
+[ext_resource type="Script" path="res://Card System/State Machine/CardAimingPrime.gd" id="8"]
+[ext_resource type="Script" path="res://Card System/State Machine/CardAimingReceive.gd" id="9"]
+[ext_resource type="Script" path="res://Card System/State Machine/CardAimingFade.gd" id="10"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvbgc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85wpw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4lqmp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rm2n7"]
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(228, 324)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -162.0
+offset_right = 114.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(114, 162)
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="CardVisual" parent="." instance=ExtResource("2")]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.036999940872192
+offset_right = -201.3480072021484
+offset_bottom = -235.10400390625
+
+[node name="Button" type="Button" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 6.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_xvbgc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_85wpw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4lqmp")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rm2n7")
+
+[node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3")
+initial_state = NodePath("CardBaseState")
+
+[node name="CardBaseState" type="Node" parent="CardStateMachine"]
+script = ExtResource("4")
+
+[node name="CardDraggingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("5")
+state = 2
+
+[node name="CardDiscardState" type="Node" parent="CardStateMachine"]
+script = ExtResource("6")
+state = 6
+
+[node name="CardAimingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("7")
+state = 3
+
+[node name="CardAimingPrime" type="Node" parent="CardStateMachine"]
+script = ExtResource("8")
+state = 7
+
+[node name="CardAimingReceive" type="Node" parent="CardStateMachine"]
+script = ExtResource("9")
+state = 5
+
+[node name="CardAimingFade" type="Node" parent="CardStateMachine"]
+script = ExtResource("10")
+state = 8
+
+[connection signal="gui_input" from="Button" to="." method="_on_button_gui_input"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

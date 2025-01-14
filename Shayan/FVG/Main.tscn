@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://f8x85yvaxx4o"]
+
+[ext_resource type="Script" path="res://game_controller.gd" id="1_ru5ik"]
+[ext_resource type="PackedScene" uid="uid://yqlr3n47tmjn" path="res://combat/characters/terry/terry.tscn" id="2_c1kje"]
+[ext_resource type="PackedScene" uid="uid://dneplpctn68qf" path="res://gui.tscn" id="2_ctthe"]
+[ext_resource type="Texture2D" uid="uid://dcaakrm54wff5" path="res://addons/kenney_prototype_textures/green/texture_01.png" id="4_njhox"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mddiu"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fso8f"]
+sky_material = SubResource("ProceduralSkyMaterial_mddiu")
+
+[sub_resource type="Environment" id="Environment_jqhn8"]
+background_mode = 2
+sky = SubResource("Sky_fso8f")
+tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_ls8sc"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qxmge"]
+_data = {
+"RESET": SubResource("Animation_ls8sc")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_up1xy"]
+shading_mode = 2
+albedo_texture = ExtResource("4_njhox")
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ru5ik")
+
+[node name="Terry" parent="." instance=ExtResource("2_c1kje")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63175, 1.35579, -0.2)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jqhn8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GUI" parent="." instance=ExtResource("2_ctthe")]
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.973099, 0.230389, 0, -0.230389, 0.973099, -0.0875634, 0.649258, 0.994133)
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.951926, -0.306327, 0, 0.306327, 0.951926, 0, 0.549414, 1.66355)
+current = true
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="GlobalAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_qxmge")
+}
+
+[node name="stage" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41748, 0, -0.206826)
+material_override = SubResource("StandardMaterial3D_up1xy")
+size = Vector3(23, 1, 1)
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
