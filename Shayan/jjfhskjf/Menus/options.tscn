@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=4]
+[gd_scene load_steps=7 format=3 uid="uid://dueetinr8oatn"]
 
 [ext_resource type="Script" path="res://Menus/options.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://dcoptsn8erdwh" path="res://UI/panel.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://UI/panel.tscn" id="2"]
 [ext_resource type="Script" path="res://Menus/h_slider.gd" id="3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6nii"]

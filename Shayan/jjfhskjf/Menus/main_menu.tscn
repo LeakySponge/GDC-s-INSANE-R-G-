@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://plfqjb4ej2sv"]
 
 [ext_resource type="Script" path="res://Menus/main_menu.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Menus/background.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bt85w7mnxdlb1" path="res://Menus/background.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://dvn3b3ocji568" path="res://Art/Tiny Pickaxe Art.png" id="3"]
 [ext_resource type="PackedScene" uid="uid://y0affnsd8io2" path="res://UI/blue_button.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Menus/options.tscn" id="5"]

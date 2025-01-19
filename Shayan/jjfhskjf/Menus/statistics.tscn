@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=4]
+[gd_scene load_steps=3 format=3 uid="uid://b3fjcsp4jq23v"]
 
 [ext_resource type="Script" path="res://Menus/statistics.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://dcoptsn8erdwh" path="res://UI/panel.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://UI/panel.tscn" id="2"]
 
 [node name="Statistics" type="Control"]
 layout_mode = 3

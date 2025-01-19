@@ -1,74 +1,252 @@
 [gd_scene load_steps=10 format=3 uid="uid://yqlr3n47tmjn"]
 
-[ext_resource type="Script" path="res://combat/state_machine.gd" id="1_qmqip"]
 [ext_resource type="Script" path="res://combat/characters/terry/terry.gd" id="1_v4erh"]
-[ext_resource type="Script" path="res://combat/characters/terry/states/movement/idle.gd" id="2_e4f4s"]
-[ext_resource type="Script" path="res://combat/characters/terry/states/movement/advance.gd" id="4_2gnhr"]
+[ext_resource type="Script" path="res://combat/characters/terry/intro.gd" id="3_ekb4c"]
+[ext_resource type="Script" path="res://combat/characters/terry/idle.gd" id="3_wbg2t"]
+[ext_resource type="Script" path="res://combat/characters/terry/advance.gd" id="4_j5yu3"]
+[ext_resource type="PackedScene" uid="uid://d4esexkuqutsh" path="res://combat/characters/terry/model.blend" id="5_sflbr"]
+[ext_resource type="Script" path="res://combat/characters/terry/lp.gd" id="6_tql8y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_50mbv"]
+radius = 0.308922
+height = 3.58018
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_2cvpy"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_opfkl"]
+radius = 0.167167
+height = 0.983025
 
-[sub_resource type="Animation" id="Animation_8b3l6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_pp75l"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 0.752527, 1), Vector3(1, 1.08441, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtjmk"]
-_data = {
-"RESET": SubResource("Animation_8b3l6"),
-"idle": SubResource("Animation_pp75l")
-}
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_6ibt5"]
+var/inAir/name = &"inAir"
+var/inAir/type = 1
+var/inAir/value = false
+var/inAir/hint = 0
+var/inAir/hint_string = ""
 
 [node name="Terry" type="CharacterBody3D"]
 script = ExtResource("1_v4erh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77676, 0)
 shape = SubResource("CapsuleShape3D_50mbv")
 
-[node name="PLAAAACEholdeerrr" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("CapsuleMesh_2cvpy")
-skeleton = NodePath("../..")
+[node name="Boxes" type="Node3D" parent="."]
 
-[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
-script = ExtResource("1_qmqip")
-CURRENT_STATE = NodePath("idle")
+[node name="Hitboxes" type="Node3D" parent="Boxes"]
 
-[node name="idle" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("2_e4f4s")
+[node name="forearm" type="Area3D" parent="Boxes/Hitboxes"]
 
-[node name="advance" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("4_2gnhr")
+[node name="r" type="CollisionShape3D" parent="Boxes/Hitboxes/forearm"]
+transform = Transform3D(0.67723, 0.127607, -0.724621, -0.0105797, 0.986433, 0.163824, 0.735695, -0.10328, 0.669392, -0.568653, 1.85819, 0.0390007)
+visible = false
+shape = SubResource("CapsuleShape3D_opfkl")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_rtjmk")
-}
+[node name="l" type="CollisionShape3D" parent="Boxes/Hitboxes/forearm"]
+transform = Transform3D(0.118073, 0.990835, 0.0656085, 0.992985, -0.11739, -0.0141838, -0.00635206, 0.066823, -0.997745, -0.221577, 2.12694, 0.623125)
+visible = false
+shape = SubResource("CapsuleShape3D_opfkl")
+
+[node name="biscep" type="Area3D" parent="Boxes/Hitboxes"]
+
+[node name="r" type="CollisionShape3D" parent="Boxes/Hitboxes/biscep"]
+transform = Transform3D(0.67723, 0.127607, -0.724621, -0.0105797, 0.986433, 0.163824, 0.735695, -0.10328, 0.669392, -0.459089, 2.49693, -0.078933)
+visible = false
+shape = SubResource("CapsuleShape3D_opfkl")
+
+[node name="l" type="CollisionShape3D" parent="Boxes/Hitboxes/biscep"]
+transform = Transform3D(0.618216, -0.301349, -0.725946, 0.276697, 0.947904, -0.157852, 0.735695, -0.10328, 0.669392, 0.363875, 2.43667, -0.078933)
+visible = false
+shape = SubResource("CapsuleShape3D_opfkl")
+
+[node name="model" parent="." instance=ExtResource("5_sflbr")]
+
+[node name="Skeleton3D" parent="model" index="0"]
+bones/3/rotation = Quaternion(-0.0288168, -0.00825354, 0.147928, 0.988544)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0259039, 0.264097, 0.956775, -0.119006)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.699276, 0.014939, -0.0334444, 0.713913)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0288168, 0.00825346, -0.147928, 0.988544)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.0259038, 0.264097, 0.956775, 0.119006)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.699276, -0.014939, 0.0334446, 0.713913)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.999402, 9.9e-09, 2.86069e-07, 0.0345863)
+bones/10/scale = Vector3(1, 1, 1.00001)
+bones/11/rotation = Quaternion(0.0143655, -3.71322e-08, 7.69053e-09, 0.999897)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(0.0606333, 0.00103435, 0.0113948, 0.998095)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.000395121, 0.996856, 0.0243298, 0.0754044)
+bones/14/rotation = Quaternion(0.0606333, -0.00103484, -0.0113948, 0.998095)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.000395128, 0.996856, 0.0243298, -0.0754044)
+bones/16/rotation = Quaternion(-0.000285578, -0.171044, 0.985263, 4.94792e-05)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(0.227917, -0.000446488, 2.74804e-05, 0.97368)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.0907929, 0.000168368, 1.53366e-05, 0.99587)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.13422, 1.50243e-09, -2.00597e-08, 0.990952)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(0.00316733, -0.000129968, 2.28435e-07, 0.999995)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(0.178198, 0.0718492, 0.719816, 0.667044)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(-0.530813, 0.829531, -0.0731127, -0.157386)
+bones/23/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.153037, -0.0193748, -0.00578756, 0.988014)
+bones/25/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(-0.0612394, 0.226988, -0.175359, 0.956021)
+bones/28/rotation = Quaternion(0.178198, -0.0718493, -0.719816, 0.667044)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(0.530813, 0.829531, -0.0731127, 0.157386)
+bones/33/rotation = Quaternion(-0.0612394, -0.226988, 0.175359, 0.956021)
+bones/39/scale = Vector3(1, 1, 1)
+
+[node name="LimboHSM" type="LimboHSM" parent="."]
+
+[node name="intro" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("3_ekb4c")
+animation_player = NodePath("../../model/AnimationPlayer")
+animation_name = &"intro"
+
+[node name="idle" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
+blackboard_plan = SubResource("BlackboardPlan_6ibt5")
+script = ExtResource("3_wbg2t")
+animation_player = NodePath("../../model/AnimationPlayer")
+animation_name = &"idle"
+
+[node name="advance" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("4_j5yu3")
+animation_player = NodePath("../../model/AnimationPlayer")
+animation_name = &"advance"
+
+[node name="blockh" type="LimboState" parent="LimboHSM"]
+
+[node name="blockm" type="LimboState" parent="LimboHSM"]
+
+[node name="jump" type="LimboState" parent="LimboHSM"]
+
+[node name="jumpfwd" type="LimboState" parent="LimboHSM"]
+
+[node name="lp" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("6_tql8y")
+animation_player = NodePath("../../model/AnimationPlayer")
+animation_name = &"lp"
+
+[node name="mp" type="LimboState" parent="LimboHSM"]
+
+[node name="lk" type="LimboState" parent="LimboHSM"]
+
+[node name="rk" type="LimboState" parent="LimboHSM"]
+
+[node name="crouchlp" type="LimboState" parent="LimboHSM"]
+
+[node name="crouchmp" type="LimboState" parent="LimboHSM"]
+
+[node name="crouchlk" type="LimboState" parent="LimboHSM"]
+
+[node name="crouchmk" type="LimboState" parent="LimboHSM"]
+
+[node name="jumplp" type="LimboState" parent="LimboHSM"]
+
+[node name="jumpmp" type="LimboState" parent="LimboHSM"]
+
+[node name="jumplk" type="LimboState" parent="LimboHSM"]
+
+[node name="jumpmk" type="LimboState" parent="LimboHSM"]
+
+[node name="launcher" type="LimboState" parent="LimboHSM"]
+
+[node name="cross" type="LimboState" parent="LimboHSM"]
+
+[node name="shun1" type="LimboState" parent="LimboHSM"]
+
+[node name="shun2" type="LimboState" parent="LimboHSM"]
+
+[node name="leftright1" type="LimboState" parent="LimboHSM"]
+
+[node name="leftright2" type="LimboState" parent="LimboHSM"]
+
+[node name="axe1" type="LimboState" parent="LimboHSM"]
+
+[node name="axe2" type="LimboState" parent="LimboHSM"]
+
+[node name="axe3" type="LimboState" parent="LimboHSM"]
+
+[node name="spinhookkick1" type="LimboState" parent="LimboHSM"]
+
+[node name="spinhookkick2" type="LimboState" parent="LimboHSM"]
+
+[node name="spinhookkick3" type="LimboState" parent="LimboHSM"]
+
+[node name="5combo1" type="LimboState" parent="LimboHSM"]
+
+[node name="5combo2" type="LimboState" parent="LimboHSM"]
+
+[node name="5combo3" type="LimboState" parent="LimboHSM"]
+
+[node name="5combo4" type="LimboState" parent="LimboHSM"]
+
+[node name="5combo5" type="LimboState" parent="LimboHSM"]
+
+[node name="6combo1" type="LimboState" parent="LimboHSM"]
+
+[node name="6combo2" type="LimboState" parent="LimboHSM"]
+
+[node name="6combo3" type="LimboState" parent="LimboHSM"]
+
+[node name="6combo4" type="LimboState" parent="LimboHSM"]
+
+[node name="6combo5" type="LimboState" parent="LimboHSM"]
+
+[node name="6combo6" type="LimboState" parent="LimboHSM"]
+
+[node name="throwfront" type="LimboState" parent="LimboHSM"]
+
+[node name="throwback" type="LimboState" parent="LimboHSM"]
+
+[node name="penfist" type="LimboState" parent="LimboHSM"]
+
+[node name="penfistex" type="LimboState" parent="LimboHSM"]
+
+[node name="medline" type="LimboState" parent="LimboHSM"]
+
+[node name="medlineex" type="LimboState" parent="LimboHSM"]
+
+[node name="powerstance" type="LimboState" parent="LimboHSM"]
+
+[node name="powerstanceex" type="LimboState" parent="LimboHSM"]
+
+[node name="specialstep" type="LimboState" parent="LimboHSM"]
+
+[node name="thrustupper" type="LimboState" parent="LimboHSM"]
+
+[node name="roundhouse" type="LimboState" parent="LimboHSM"]
+
+[node name="flarekick" type="LimboState" parent="LimboHSM"]
+
+[node name="backdashspec" type="LimboState" parent="LimboHSM"]
+
+[node name="mental" type="LimboState" parent="LimboHSM"]
+
+[node name="drillpunch" type="LimboState" parent="LimboHSM"]
+
+[node name="swing" type="LimboState" parent="LimboHSM"]
+
+[node name="sway" type="LimboState" parent="LimboHSM"]
+
+[node name="leapsidekick" type="LimboState" parent="LimboHSM"]
+
+[node name="rightsweep" type="LimboState" parent="LimboHSM"]
+
+[node name="DEVIL" type="LimboState" parent="LimboHSM"]
+
+[node name="CROSSART!" type="LimboState" parent="LimboHSM"]
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+
+[editable path="model"]

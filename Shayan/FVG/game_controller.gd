@@ -5,12 +5,15 @@ class_name GameController extends Node
 
 
 
-func _on_child_entered_tree(node: Node) -> void:
-	init_battle()
+#func _on_child_entered_tree(node: Node) -> void:
+	##init_battle()
+	#SignalManager.start_intros.emit()
 
-func init_battle():
-	add_characters()
-	add_stage()
+
+
+#func init_battle():
+	#add_characters()
+	#add_stage()
 
 
 # Later for more stages
@@ -27,4 +30,13 @@ func add_characters():
 	#loaded_player1.global_position = Vector3(100, 100, 100)
 	#print(spawn_position)
 	#print($Terry.global_position)
+	pass
+
+
+func _ready() -> void:
+	SignalManager.start_fight.connect(on_start_fight)
+	SignalManager.start_intros.emit()
+	print("sent start_intro")
+
+func on_start_fight():
 	pass

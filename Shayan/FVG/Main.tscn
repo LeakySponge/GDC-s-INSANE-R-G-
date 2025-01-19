@@ -13,8 +13,11 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_mddiu")
 
 [sub_resource type="Environment" id="Environment_jqhn8"]
-background_mode = 2
 sky = SubResource("Sky_fso8f")
+ambient_light_source = 2
+ambient_light_color = Color(0.856067, 0.856067, 0.856067, 1)
+ambient_light_energy = 2.12
+reflected_light_source = 1
 tonemap_mode = 2
 
 [sub_resource type="Animation" id="Animation_ls8sc"]
@@ -33,22 +36,24 @@ albedo_texture = ExtResource("4_njhox")
 script = ExtResource("1_ru5ik")
 
 [node name="Terry" parent="." instance=ExtResource("2_c1kje")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63175, 1.35579, -0.2)
+transform = Transform3D(-0.0932221, 0, 0.995645, 0, 1, 0, -0.995645, 0, -0.0932221, -2.63175, 0.55579, -0.2)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jqhn8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
+light_energy = 1.56
 shadow_enabled = true
 
 [node name="GUI" parent="." instance=ExtResource("2_ctthe")]
 
 [node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.973099, 0.230389, 0, -0.230389, 0.973099, -0.0875634, 0.649258, 0.994133)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0875634, 1.94926, 1.99413)
 
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
-transform = Transform3D(1, 0, 0, 0, 0.951926, -0.306327, 0, 0.306327, 0.951926, 0, 0.549414, 1.66355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.849414, 1.66355)
 current = true
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="CameraController/Camera3D"]
@@ -62,9 +67,14 @@ libraries = {
 }
 
 [node name="stage" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41748, 0, -0.206826)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41748, 0, -2.20683)
 material_override = SubResource("StandardMaterial3D_up1xy")
-size = Vector3(23, 1, 1)
+use_collision = true
+size = Vector3(19, 1, 7)
+
+[node name="Terry2" parent="." instance=ExtResource("2_c1kje")]
+transform = Transform3D(-0.241499, 0, -0.970401, 0, 1, 0, 0.970401, 0, -0.241499, 3.50936, 0.576494, -0.269357)
+playernum = 2
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

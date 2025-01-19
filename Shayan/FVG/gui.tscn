@@ -10,3 +10,17 @@ offset_bottom = 40.0
 
 [node name="Debug" parent="." instance=ExtResource("1_nnn0p")]
 layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 452.0
+offset_bottom = 70.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 22.0
+offset_right = 1148.0
+offset_bottom = 72.0

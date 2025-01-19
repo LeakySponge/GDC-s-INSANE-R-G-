@@ -17,4 +17,5 @@ func _on_child_entered_tree(node: Node) -> void:
 	
 
 func transition():
+	Global.game_state = "intro"
 	get_tree().change_scene_to_file("res://Main.tscn")

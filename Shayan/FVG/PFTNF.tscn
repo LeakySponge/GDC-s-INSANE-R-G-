@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfx2xb3yi7vj5"]
+[gd_scene load_steps=7 format=3 uid="uid://cfx2xb3yi7vj5"]
 
 [ext_resource type="Script" path="res://pftnf.gd" id="1_l6y4a"]
+[ext_resource type="Texture2D" uid="uid://di8c0egvgiy3" path="res://temp stuff/amir.png" id="2_o7qws"]
+[ext_resource type="Texture2D" uid="uid://cb48sa3w76djl" path="res://temp stuff/saimon.png" id="3_duleb"]
 
 [sub_resource type="Animation" id="Animation_xsohf"]
 length = 0.001
@@ -39,10 +41,10 @@ libraries = {
 }
 
 [node name="player1" type="Label" parent="."]
-offset_left = 320.0
-offset_top = 208.0
-offset_right = 378.0
-offset_bottom = 231.0
+offset_left = 552.0
+offset_top = 455.0
+offset_right = 610.0
+offset_bottom = 478.0
 text = "player1
 "
 
@@ -53,5 +55,15 @@ offset_right = 611.0
 offset_bottom = 231.0
 text = "player2
 "
+
+[node name="Amir" type="Sprite2D" parent="."]
+position = Vector2(232, 314)
+scale = Vector2(2.60593, 3.37567)
+texture = ExtResource("2_o7qws")
+
+[node name="Saimon" type="Sprite2D" parent="."]
+position = Vector2(925, 313)
+scale = Vector2(2.78378, 3.69753)
+texture = ExtResource("3_duleb")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

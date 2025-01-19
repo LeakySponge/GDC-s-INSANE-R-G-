@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://32a3yc0kt30x"]
 
 [ext_resource type="Script" path="res://Game/game.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Menus/background.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bt85w7mnxdlb1" path="res://Menus/background.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://cmnpuu08bk5f6" path="res://Art/Banner.png" id="3"]
 [ext_resource type="PackedScene" path="res://UI/expedition_counter.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://UI/deck_display_button.tscn" id="5"]
@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" path="res://UI/score_progress_bar.tscn" id="22"]
 [ext_resource type="PackedScene" path="res://UI/time_left_bar.tscn" id="23"]
 [ext_resource type="PackedScene" path="res://UI/draw_pile.tscn" id="24"]
-[ext_resource type="PackedScene" path="res://UI/discard_pile.tscn" id="25"]
+[ext_resource type="PackedScene" uid="uid://da770ns8s8rio" path="res://UI/discard_pile.tscn" id="25"]
 [ext_resource type="PackedScene" path="res://UI/card_pile_display.tscn" id="26"]
 [ext_resource type="Script" path="res://Game/Controls Display.gd" id="27"]
 [ext_resource type="Texture2D" uid="uid://dkwqjrup2ogpg" path="res://Art/Score Requirement Reached.png" id="28"]

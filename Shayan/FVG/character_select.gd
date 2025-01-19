@@ -5,7 +5,7 @@ extends Node3D
 func _ready() -> void:
 	Global.player1 = str("res://combat/characters/terry/terry.tscn")
 	Global.stage = Global.stages["training"]
+	Console.add_command("startmatch", start_match, [1, 2])
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("service 1"):
-		get_tree().change_scene_to_file("res://PFTNF.tscn")
+func start_match(char1, char2):
+	get_tree().change_scene_to_file("res://PFTNF.tscn")
